@@ -1,23 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='div-clima'>
+        <div className='div-temperatura'>
+          <div className='div-temp-actual'>
+            TEMP.ACTUAL:20°
+          </div>
+          <div className='div-fecha-hora'>
+            LUNES 10/05/23 11:36 A.M.
+          </div>
+          <div className='div-max-min'>
+            MIN:12°/MAX:25°
+          </div>
+        </div>
+        <div className='div-datos-clima'>
+          <div className='div-temp-x-hora'>
+            GRAFICO TEMP.A CADA HORA
+          </div>
+          <div className='div-otros-datos'>
+            DATOS COMPLEMENTARIOS
+          </div>
+        </div>
+      </div>
+      <div className='div-trafico'>
+        TRAFICO
+      </div>
     </div>
   );
 }

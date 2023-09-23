@@ -9,7 +9,7 @@ function App() {
             TEMP. ACTUAL: 20°
           </div>
           <div className='div-fecha-hora'>
-            LUNES 10/05/23 11:36 A.M.
+            LUNES 10 MAYO 11:36
           </div>
           <div className='div-max-min'>
             MIN:12° / MAX:25°

@@ -24,8 +24,8 @@ function App() {
           </div>
         </div>
       </div>
-      <div className='div-trafico'>
-        TRAFICO
+      <div className='div-transporte'>
+        TRANSPORTE DE PASAJEROS
       </div>
     </div>
   );

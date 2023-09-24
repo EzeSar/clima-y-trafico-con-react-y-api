@@ -4,6 +4,7 @@ import termometro from '../assets/termometro.gif';
 const StyledDivTemp = styled.div`
   background-image: url(${termometro});
   background-size: cover;
+  background-position: center;
   border-radius: 50%;
   display: grid;
   align-items: center;

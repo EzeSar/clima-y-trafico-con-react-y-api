@@ -7,7 +7,7 @@ const StylFechaHoraMinMax = styled.div`
   grid-template-rows: 1fr 1fr;
   background-image: url(${soleado});
   background-size: cover;
-  background-position: right;
+  background-position: top,right;
   align-items: center;
   justify-items: center;
   font-size: 1.5em;

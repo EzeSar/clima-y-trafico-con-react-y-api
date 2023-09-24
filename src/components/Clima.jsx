@@ -9,6 +9,9 @@ const StyledGridClima = styled.div`
   grid-template-columns: 1fr 3fr;
   grid-template-rows: 1fr 1.5fr;
   gap: 10px;
+  @media (max-width: 800px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export default function Clima(){

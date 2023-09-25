@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import StyledDatoDestacado from "./StyledDatoDestacado";
-import uv from '../assets/uv.gif';
-import viento from '../assets/viento.gif';
+import uv from '../assets/uv.svg';
+import viento from '../assets/viento.svg';
 import amanecer from '../assets/amanecer.gif';
-import humedad from '../assets/humedad.gif';
-import visibilidad from '../assets/visibilidad.gif';
-import aire from '../assets/aire.gif';
+import humedad from '../assets/humedad.svg';
+import visibilidad from '../assets/visibilidad.svg';
+import aire from '../assets/aire.svg';
 
 const StylDatosDestacados = styled.div`
   display: grid;

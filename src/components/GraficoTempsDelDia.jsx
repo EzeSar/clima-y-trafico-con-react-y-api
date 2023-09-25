@@ -3,8 +3,8 @@ import styled from "styled-components";
 const GrillaTempsDelDia = styled.div`
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 0.5fr 1fr;
-  gap: 10px;
+  grid-template-rows: 1fr 1fr;
+  gap: 5px;
 `;
 
 function Temperaturas(props){

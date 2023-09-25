@@ -16,7 +16,7 @@ const StyledDivTempsDia = styled.div`
 export default function TempsDelDia(){
   return(
     <StyledDivTempsDia>
-      <h2>Temperaturas del dia de hoy</h2>
+      <h1>Temperaturas del dia de hoy</h1>
       <GraficoTempsDelDia />
     </StyledDivTempsDia>
   );

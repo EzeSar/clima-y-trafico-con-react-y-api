@@ -1,15 +1,12 @@
 import styled from "styled-components";
-import termometro from '../assets/termometro.svg';
+import Termometro from "./Termometro";
   
 const StyledDivTemp = styled.div`
-  background-image: url(${termometro});
-  background-size: cover;
-  background-position: center;
   border-radius: 50%;
   display: grid;
   align-items: center;
   justify-items: center;
-  font-size: 1.5em;
+  font-size: 1em;
   font-weight: bold;
   color: whitesmoke;
   text-shadow:
@@ -22,7 +19,8 @@ const StyledDivTemp = styled.div`
 export default function TempActual(clima){
   return(
     <StyledDivTemp>
-      Temperatura actual : 25°c
+      TEMP. ACTUAL:
+      <Termometro value='25' />
     </StyledDivTemp>
   );
 }

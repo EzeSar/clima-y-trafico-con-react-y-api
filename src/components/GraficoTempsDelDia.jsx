@@ -3,25 +3,22 @@ import styled from "styled-components";
 const GrillaTempsDelDia = styled.div`
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 1fr 1fr;
-  gap: 5px;
+  grid-template-rows: 0.5fr 1fr;
 `;
 
 function Temperaturas(props){
 
-  let color = '';
-
-  if(props.temperatura<15){
-    color = 'blue';
-  } else if(props.temperatura>22){
-    color = 'red';
-  } else {
-    color = 'orange';
-  };
+  const StyledMeter = styled.meter`
+    transform: rotate(-90deg);
+    height: 15px;
+    width: 30px;
+    background-image: linear-gradient( -90deg, red, orange, yellow, lightblue, blue);
+  `;
 
   return(
-    <div style={{backgroundColor:(color)}}>
-      {props.temperatura}°c
+    <div>
+      <p>{props.temperatura}°c</p>
+      <StyledMeter min="0" max="50" low="0" high="50" optimum="25" value={props.temperatura} />
     </div>
   );
 }

@@ -16,11 +16,11 @@ const StyledDivTemp = styled.div`
   border: 10px solid firebrick;
 `;
 
-export default function TempActual(clima){
+export default function TempActual(props){
   return(
     <StyledDivTemp>
       TEMP. ACTUAL:
-      <Termometro value='25' />
+      <Termometro value={props.temp_actual} />
     </StyledDivTemp>
   );
 }

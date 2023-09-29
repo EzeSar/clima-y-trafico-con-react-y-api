@@ -3,6 +3,7 @@ import TempActual from "./TempActual";
 import TempsDelDia from "./TempsDelDia";
 import GridFechaHoraMinMax from "./GridFechaHoraMinMax";
 import GridDatosDestacados from "./GridDatosDestacados";
+import { DatosApi } from "./DatosApi";
 
 const StyledGridClima = styled.div`
   display: grid;
@@ -15,9 +16,10 @@ const StyledGridClima = styled.div`
 `;
 
 export default function Clima(){
+  
   return(
     <StyledGridClima>
-      <TempActual />
+      <TempActual temp_actual={DatosApi.current_weather.temperature}/>
       <TempsDelDia />
       <GridFechaHoraMinMax />
       <GridDatosDestacados />

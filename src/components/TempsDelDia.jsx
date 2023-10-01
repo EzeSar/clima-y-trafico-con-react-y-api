@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import GraficoTempsDelDia from "./GraficoTempsDelDia";
+import { LineChart, Line, XAxis, YAxis, Tooltip } from 'recharts';
 
 const StyledDivTempsDia = styled.div`
   display: grid;
@@ -11,13 +11,22 @@ const StyledDivTempsDia = styled.div`
   0 0 0.5em red;
   text-align: center;
   padding: 30px;
+  justify-items: left;
 `;
 
-export default function TempsDelDia(){
+export default function TempsDelDia(props){
   return(
     <StyledDivTempsDia>
-      <h2>Temperaturas del dia de hoy</h2>
-      <GraficoTempsDelDia />
+
+      <h1>&#127777; - Temperaturas del dia de hoy - &#127777;</h1>
+
+      <LineChart width={500} height={100} data={props.data}>
+        <Line type="monotone" dataKey="temp" stroke="#8884d8" />
+        <XAxis dataKey="hora" />
+        <YAxis />
+        <Tooltip />
+      </LineChart>
+
     </StyledDivTempsDia>
   );
 }

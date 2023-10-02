@@ -26,14 +26,33 @@ let temps_del_dia = [
   {hora: '21hs', temp: DatosApi.hourly.temperature_2m[21]}
 ];
 
+let fecha_hora_min_max = {
+  fecha: (DatosApi.current_weather.time).split('T')[0],
+  hora: (DatosApi.current_weather.time).split('T')[1],
+  min: DatosApi.daily.temperature_2m_min[0],
+  max: DatosApi.daily.temperature_2m_max[0]
+};
+
+let hora_sola = ((DatosApi.current_weather.time).split('T')[1]).split(':')[0];
+
+let datos_destacados = {
+  uv: DatosApi.daily.uv_index_max[0],
+  viento: DatosApi.hourly.windspeed_10m[hora_sola],
+  amanece: (DatosApi.daily.sunrise[0]).split('T')[1],
+  anochece: (DatosApi.daily.sunset[0]).split('T')[1],
+  humedad: DatosApi.hourly.relativehumidity_2m[hora_sola],
+  visibilidad: DatosApi.hourly.visibility[hora_sola],
+  lluvia: DatosApi.hourly.precipitation_probability[hora_sola]
+};
+
 export default function Clima(){
   
   return(
     <StyledGridClima>
       <TempActual temp_actual={DatosApi.current_weather.temperature}/>
       <TempsDelDia data={temps_del_dia} />
-      <GridFechaHoraMinMax />
-      <GridDatosDestacados />
+      <GridFechaHoraMinMax data={fecha_hora_min_max} />
+      <GridDatosDestacados data={datos_destacados} />
     </StyledGridClima>
   );
 }

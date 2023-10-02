@@ -19,7 +19,7 @@ const StyledDivTemp = styled.div`
 export default function TempActual(props){
   return(
     <StyledDivTemp>
-      TEMP. ACTUAL:
+      <p>TEMP. ACTUAL:</p>
       <Termometro value={props.temp_actual} />
     </StyledDivTemp>
   );

@@ -21,13 +21,13 @@ const StylFechaHoraMinMax = styled.div`
   border: ridge 10px burlywood;
 `;
 
-export default function GridFechaHoraMinMax(){
+export default function GridFechaHoraMinMax(props){
   return(
     <StylFechaHoraMinMax>
-      <div>10 de Junio</div>
-      <div>16:45</div>
-      <div>Temp.Min 12°c</div>
-      <div>Temp.Max 25°c</div>
+      <div>{props.data.fecha}</div>
+      <div>hora: {props.data.hora}</div>
+      <div>min: {props.data.min}</div>
+      <div>max: {props.data.max}</div>
     </StylFechaHoraMinMax>
   );
 }

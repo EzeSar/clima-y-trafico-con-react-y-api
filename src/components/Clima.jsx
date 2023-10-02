@@ -17,13 +17,17 @@ const StyledGridClima = styled.div`
 
 let temps_del_dia = [
   {hora: '00hs', temp: DatosApi.hourly.temperature_2m[0]},
-  {hora: '03hs', temp: DatosApi.hourly.temperature_2m[3]},
+  {hora: '02hs', temp: DatosApi.hourly.temperature_2m[2]},
+  {hora: '04hs', temp: DatosApi.hourly.temperature_2m[4]},
   {hora: '06hs', temp: DatosApi.hourly.temperature_2m[6]},
-  {hora: '09hs', temp: DatosApi.hourly.temperature_2m[9]},
+  {hora: '08hs', temp: DatosApi.hourly.temperature_2m[8]},
+  {hora: '10hs', temp: DatosApi.hourly.temperature_2m[10]},
   {hora: '12hs', temp: DatosApi.hourly.temperature_2m[12]},
-  {hora: '15hs', temp: DatosApi.hourly.temperature_2m[15]},
+  {hora: '14hs', temp: DatosApi.hourly.temperature_2m[14]},
+  {hora: '16hs', temp: DatosApi.hourly.temperature_2m[16]},
   {hora: '18hs', temp: DatosApi.hourly.temperature_2m[18]},
-  {hora: '21hs', temp: DatosApi.hourly.temperature_2m[21]}
+  {hora: '20hs', temp: DatosApi.hourly.temperature_2m[20]},
+  {hora: '22hs', temp: DatosApi.hourly.temperature_2m[22]}
 ];
 
 let fecha_hora_min_max = {
@@ -37,11 +41,11 @@ let hora_sola = ((DatosApi.current_weather.time).split('T')[1]).split(':')[0];
 
 let datos_destacados = {
   uv: DatosApi.daily.uv_index_max[0],
-  viento: DatosApi.hourly.windspeed_10m[hora_sola],
+  viento: DatosApi.current_weather.windspeed,
   amanece: (DatosApi.daily.sunrise[0]).split('T')[1],
   anochece: (DatosApi.daily.sunset[0]).split('T')[1],
   humedad: DatosApi.hourly.relativehumidity_2m[hora_sola],
-  visibilidad: DatosApi.hourly.visibility[hora_sola],
+  visibilidad: Math.round((DatosApi.hourly.visibility[hora_sola])/1000),
   lluvia: DatosApi.hourly.precipitation_probability[hora_sola]
 };
 

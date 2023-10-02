@@ -212,4 +212,4 @@ export const DatosApi = {
           7.75
       ]
   }
-}
+};

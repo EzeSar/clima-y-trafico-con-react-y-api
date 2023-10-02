@@ -3,8 +3,8 @@ import soleado from '../assets/soleado.gif';
 
 const StylFechaHoraMinMax = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(4, 1fr);
   background-image: url(${soleado});
   background-size: cover;
   background-position: top,right;

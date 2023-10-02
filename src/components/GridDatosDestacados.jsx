@@ -21,8 +21,8 @@ export default function GridDatosDestacados(props){
       <StyledDatoDestacado value={`Viento ${props.data.viento}km/h`} image={viento} />
       <StyledDatoDestacado value={`Amanece ${props.data.amanece} Anochece ${props.data.anochece}`} image={amanecer} />
       <StyledDatoDestacado value={`Humedad ${props.data.humedad}%`} image={humedad} />
-      <StyledDatoDestacado value={`Visibilidad ${props.data.visibilidad}mts`} image={smoke} />
-      <StyledDatoDestacado value={`Probabilidad lluvia ${props.data.lluvia}%`} image={umbrella} />
+      <StyledDatoDestacado value={`Visibilidad ${props.data.visibilidad}km`} image={smoke} />
+      <StyledDatoDestacado value={`Probab. de lluvia ${props.data.lluvia}%`} image={umbrella} />
     </StylDatosDestacados>
   );
 }

@@ -1,6 +1,6 @@
 {
-  "homepage": "https://ezesar.github.io/clima-y-transporte-con-react-y-api",
-  "name": "clima-y-trafico-con-react-y-api",
+  "homepage": "https://ezesar.github.io/clima_y_transporte",
+  "name": "clima_y_transporte",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

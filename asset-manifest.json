@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/clima_y_transporte/static/css/main.e95f4ed7.css",
-    "main.js": "/clima_y_transporte/static/js/main.12e5b21c.js",
+    "main.js": "/clima_y_transporte/static/js/main.b0602c55.js",
     "static/js/787.52a6400d.chunk.js": "/clima_y_transporte/static/js/787.52a6400d.chunk.js",
     "static/media/soleado.gif": "/clima_y_transporte/static/media/soleado.11bd71a25780cabccaba.gif",
     "static/media/gps.gif": "/clima_y_transporte/static/media/gps.8627f9765bc022e5242e.gif",
@@ -13,11 +13,11 @@
     "index.html": "/clima_y_transporte/index.html",
     "static/media/umbrella.svg": "/clima_y_transporte/static/media/umbrella.83a363f551ac4169c52b970967ea5fdd.svg",
     "main.e95f4ed7.css.map": "/clima_y_transporte/static/css/main.e95f4ed7.css.map",
-    "main.12e5b21c.js.map": "/clima_y_transporte/static/js/main.12e5b21c.js.map",
+    "main.b0602c55.js.map": "/clima_y_transporte/static/js/main.b0602c55.js.map",
     "787.52a6400d.chunk.js.map": "/clima_y_transporte/static/js/787.52a6400d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e95f4ed7.css",
-    "static/js/main.12e5b21c.js"
+    "static/js/main.b0602c55.js"
   ]
 }

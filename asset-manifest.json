@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/clima_y_transporte/static/css/main.e95f4ed7.css",
-    "main.js": "/clima_y_transporte/static/js/main.b0602c55.js",
+    "main.css": "/clima_y_transporte/static/css/main.b4ebfd50.css",
+    "main.js": "/clima_y_transporte/static/js/main.058b1d92.js",
     "static/js/787.52a6400d.chunk.js": "/clima_y_transporte/static/js/787.52a6400d.chunk.js",
     "static/media/soleado.gif": "/clima_y_transporte/static/media/soleado.11bd71a25780cabccaba.gif",
     "static/media/gps.gif": "/clima_y_transporte/static/media/gps.8627f9765bc022e5242e.gif",
@@ -10,14 +10,15 @@
     "static/media/smoke.svg": "/clima_y_transporte/static/media/smoke.14e1644a197f271de8789c43082137cb.svg",
     "static/media/humedad.svg": "/clima_y_transporte/static/media/humedad.e11b2f5b3c042971acc5dcda127cc9e1.svg",
     "static/media/uv.svg": "/clima_y_transporte/static/media/uv.b0d925d0e553a339a26220a1985b6efc.svg",
+    "static/media/despejado_dia.svg": "/clima_y_transporte/static/media/despejado_dia.f1148f358aa1e13bee23b6cf1b54bac7.svg",
     "index.html": "/clima_y_transporte/index.html",
     "static/media/umbrella.svg": "/clima_y_transporte/static/media/umbrella.83a363f551ac4169c52b970967ea5fdd.svg",
-    "main.e95f4ed7.css.map": "/clima_y_transporte/static/css/main.e95f4ed7.css.map",
-    "main.b0602c55.js.map": "/clima_y_transporte/static/js/main.b0602c55.js.map",
+    "main.b4ebfd50.css.map": "/clima_y_transporte/static/css/main.b4ebfd50.css.map",
+    "main.058b1d92.js.map": "/clima_y_transporte/static/js/main.058b1d92.js.map",
     "787.52a6400d.chunk.js.map": "/clima_y_transporte/static/js/787.52a6400d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e95f4ed7.css",
-    "static/js/main.b0602c55.js"
+    "static/css/main.b4ebfd50.css",
+    "static/js/main.058b1d92.js"
   ]
 }

@@ -28,7 +28,7 @@ export default function GridFechaHoraMinMax(props){
       <div>hora: {props.data.hora}</div>
       <div>min: {props.data.min}</div>
       <div>max: {props.data.max}</div>
-      <div>{props.data.weather.alt}</div>
+      <div>{props.data.weather.name}</div>
     </StylFechaHoraMinMax>
   );
 }

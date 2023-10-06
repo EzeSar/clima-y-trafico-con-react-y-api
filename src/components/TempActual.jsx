@@ -14,12 +14,13 @@ const StyledDivTemp = styled.div`
   0 0 0.5em red;
   padding: 10px;
   border: 10px solid firebrick;
+  min-width: 200px;
 `;
 
 export default function TempActual(props){
   return(
     <StyledDivTemp>
-      <p>TEMP. ACTUAL:</p>
+      <p>Temp. Actual :</p>
       <Termometro value={props.temp_actual} />
     </StyledDivTemp>
   );

@@ -12,6 +12,7 @@ const StylDivDato = styled.div`
   0 0 0.5em red;
   text-align: center;
   background-size: cover;
+  background-position: center;
   border-radius: 10%;
   border: 10px solid black;
 `;

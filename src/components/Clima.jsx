@@ -3,12 +3,12 @@ import TempActual from "./TempActual";
 import TempsDelDia from "./TempsDelDia";
 import GridFechaHoraMinMax from "./GridFechaHoraMinMax";
 import GridDatosDestacados from "./GridDatosDestacados";
-import { DatosApi } from "./DatosApi";
+import DatosApi from "./DatosApi";
 import { WeatherCodes } from "./WeatherCodes";
 
 const StyledGridClima = styled.div`
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 1fr 1.5fr;
   grid-template-rows: 1fr 1.5fr;
   gap: 10px;
   @media (max-width: 800px) {
@@ -18,17 +18,13 @@ const StyledGridClima = styled.div`
 
 let temps_del_dia = [
   {hora:'00hs', temp:DatosApi.hourly.temperature_2m[0]},
-  {hora:'02hs', temp:DatosApi.hourly.temperature_2m[2]},
-  {hora:'04hs', temp:DatosApi.hourly.temperature_2m[4]},
+  {hora:'03hs', temp:DatosApi.hourly.temperature_2m[3]},
   {hora:'06hs', temp:DatosApi.hourly.temperature_2m[6]},
-  {hora:'08hs', temp:DatosApi.hourly.temperature_2m[8]},
-  {hora:'10hs', temp:DatosApi.hourly.temperature_2m[10]},
+  {hora:'09hs', temp:DatosApi.hourly.temperature_2m[9]},
   {hora:'12hs', temp:DatosApi.hourly.temperature_2m[12]},
-  {hora:'14hs', temp:DatosApi.hourly.temperature_2m[14]},
-  {hora:'16hs', temp:DatosApi.hourly.temperature_2m[16]},
+  {hora:'15hs', temp:DatosApi.hourly.temperature_2m[15]},
   {hora:'18hs', temp:DatosApi.hourly.temperature_2m[18]},
-  {hora:'20hs', temp:DatosApi.hourly.temperature_2m[20]},
-  {hora:'22hs', temp:DatosApi.hourly.temperature_2m[22]}
+  {hora:'21hs', temp:DatosApi.hourly.temperature_2m[21]},
 ];
 
 let fecha_hora_min_max = {
@@ -37,7 +33,7 @@ let fecha_hora_min_max = {
   min:DatosApi.daily.temperature_2m_min[0],
   max:DatosApi.daily.temperature_2m_max[0],
   weather:{
-    alt:WeatherCodes[0].alt,
+    name:WeatherCodes[0].name,
     img:WeatherCodes[0].img
   }
 };

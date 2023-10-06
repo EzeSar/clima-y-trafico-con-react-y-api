@@ -12,17 +12,15 @@ const StyledDivTempsDia = styled.div`
   text-align: center;
   padding: 30px;
   justify-items: stretch;
-  font-size: 1em;
-  font-weight: bold;
 `;
 
 export default function TempsDelDia(props){
   return(
     <StyledDivTempsDia>
 
-      <h1>&#127777; - Temperaturas del dia de hoy - &#127777;</h1>
+      <h3>&#127777; - Temperaturas del dia de hoy - &#127777;</h3>
 
-      <LineChart width={600} height={100} data={props.data}>
+      <LineChart width={400} height={100} data={props.data}>
         <Line type="monotone" dataKey="temp" stroke="#8884d8" />
         <XAxis dataKey="hora" />
         <YAxis />

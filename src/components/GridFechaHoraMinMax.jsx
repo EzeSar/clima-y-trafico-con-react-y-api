@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import soleado from '../assets/soleado.gif';
+import despejado_dia from '../assets/animation-weather/despejado_dia.svg';
+import { ImagenClima } from "./ImagenClima";
 
 const StylFechaHoraMinMax = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(5, 1fr);
-  background-image: url(${soleado});
+  background-image: url(${despejado_dia});
   background-size: cover;
   background-position: top,right;
   align-items: center;

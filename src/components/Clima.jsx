@@ -3,7 +3,7 @@ import TempActual from "./TempActual";
 import TempsDelDia from "./TempsDelDia";
 import GridFechaHoraMinMax from "./GridFechaHoraMinMax";
 import GridDatosDestacados from "./GridDatosDestacados";
-import DatosApi from "./DatosApi";
+import { DatosApi } from "./DatosApi";
 import { WeatherCodes } from "./WeatherCodes";
 
 const StyledGridClima = styled.div`

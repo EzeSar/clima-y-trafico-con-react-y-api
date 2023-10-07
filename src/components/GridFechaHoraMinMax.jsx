@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import soleado from '../assets/soleado.gif';
 import despejado_dia from '../assets/animation-weather/despejado_dia.svg';
-import { ImagenClima } from "./ImagenClima";
+//import { ImagenClima } from "./ImagenClima";
 
 const StylFechaHoraMinMax = styled.div`
   display: grid;

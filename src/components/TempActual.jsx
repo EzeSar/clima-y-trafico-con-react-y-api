@@ -6,7 +6,6 @@ const StyledDivTemp = styled.div`
   display: grid;
   align-items: center;
   justify-items: center;
-  font-size: 1em;
   font-weight: bold;
   color: whitesmoke;
   text-shadow:

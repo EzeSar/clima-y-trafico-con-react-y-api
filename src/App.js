@@ -1,13 +1,13 @@
-import './App.css';
-import Clima from './components/Clima';
-import Transporte from './components/Transporte';import { useState, useEffect } from 'react';
-import { DatosApi } from './components/DatosApi';
+import "./App.css";
+import Clima from "./components/Clima";
+import Transporte from "./components/Transporte";import { useState, useEffect } from "react";
+import { Datos } from "./components/Datos";
 
 function App() {
 
-  const [datosApi2, setDatosApi2] = useState(DatosApi);
+  const [datosApi2, setDatosApi2] = useState(Datos);
 
-  useEffect(()=>{setDatosApi2(DatosApi)},[]);
+  useEffect(()=>{setDatosApi2(Datos)},[]);
 
   return (
     <div className="App">

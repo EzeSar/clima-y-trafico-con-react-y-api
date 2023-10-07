@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { LineChart, Line, XAxis, YAxis, Tooltip } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Tooltip } from "recharts";
 
 const StyledDivTempsDia = styled.div`
   display: grid;

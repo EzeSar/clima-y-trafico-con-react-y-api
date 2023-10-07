@@ -5,7 +5,6 @@ const StylDivDato = styled.div`
   align-content: center;
   justify-content: center;
   color: whitesmoke;
-  font-size: large;
   font-weight: bold;
   text-shadow:
   1px 1px 1px black,

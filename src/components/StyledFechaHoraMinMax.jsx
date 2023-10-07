@@ -8,7 +8,6 @@ const StylFechaHoraMinMax = styled.div`
   background-position: top,right;
   align-items: center;
   justify-items: center;
-  font-size: 1.5em;
   font-weight: bold;
   color: whitesmoke;
   text-shadow:
@@ -22,11 +21,11 @@ const StylFechaHoraMinMax = styled.div`
 export default function StyledFechaHoraMinMax(props){
   return(
     <StylFechaHoraMinMax style={{backgroundImage:`url(${props.image})`}} >
-      <div>{props.data.fecha}</div>
-      <div>hora: {props.data.hora}</div>
-      <div>min: {props.data.min}</div>
-      <div>max: {props.data.max}</div>
-      <div>{props.data.weather.name}</div>
+      <p>{props.data.fecha}</p>
+      <p>hora: {props.data.hora}</p>
+      <p>min: {props.data.min}</p>
+      <p>max: {props.data.max}</p>
+      <p>{props.data.weather.name}</p>
     </StylFechaHoraMinMax>
   );
 }

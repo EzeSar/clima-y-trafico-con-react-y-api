@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import gps from '../assets/gps.gif';
+import gps from "../assets/gps.gif";
 
 const StyledDiv = styled.div`
   text-align: center;

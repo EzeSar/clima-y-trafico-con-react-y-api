@@ -17,12 +17,12 @@ const StylDatosDestacados = styled.div`
 export default function GridDatosDestacados(props){
   return(
     <StylDatosDestacados>
-      <StyledDatoDestacado value={`Indice UV: ${props.data.uv}`} image={uv} />
-      <StyledDatoDestacado value={`Viento ${props.data.viento}km/h`} image={viento} />
-      <StyledDatoDestacado value={`Amanece ${props.data.amanece} Anochece ${props.data.anochece}`} image={amanecer} />
-      <StyledDatoDestacado value={`Humedad ${props.data.humedad}%`} image={humedad} />
-      <StyledDatoDestacado value={`Visibilidad ${props.data.visibilidad}km`} image={smoke} />
-      <StyledDatoDestacado value={`Probabilidad de lluvia ${props.data.lluvia}%`} image={umbrella} />
+      <StyledDatoDestacado value={`Indice UV: ${props["data"]["uv"]}`} image={uv} />
+      <StyledDatoDestacado value={`Viento ${props["data"]["viento"]}km/h`} image={viento} />
+      <StyledDatoDestacado value={`Amanece ${props["data"]["amanece"]} Anochece ${props.data.anochece}`} image={amanecer} />
+      <StyledDatoDestacado value={`Humedad ${props["data"]["humedad"]}%`} image={humedad} />
+      <StyledDatoDestacado value={`Visibilidad ${props["data"]["visibilidad"]}km`} image={smoke} />
+      <StyledDatoDestacado value={`Probabilidad de lluvia ${props["data"]["lluvia"]}%`} image={umbrella} />
     </StylDatosDestacados>
   );
 }

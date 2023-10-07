@@ -19,8 +19,8 @@ const StylDivDato = styled.div`
 export default function StyledDatoDestacado(props){
 
   return(
-    <StylDivDato style={{backgroundImage:`url(${props.image})`}} >
-      <p>{props.value}</p>
+    <StylDivDato style={{backgroundImage:`url(${props["image"]})`}} >
+      <p>{props["value"]}</p>
     </StylDivDato>
   );
 }

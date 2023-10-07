@@ -20,7 +20,7 @@ export default function TempActual(props){
   return(
     <StyledDivTemp>
       <p>Temp. Actual :</p>
-      <Termometro value={props.temp_actual} />
+      <Termometro value={props["temp_actual"]} />
     </StyledDivTemp>
   );
 }

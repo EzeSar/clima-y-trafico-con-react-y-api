@@ -20,12 +20,12 @@ const StylFechaHoraMinMax = styled.div`
 
 export default function StyledFechaHoraMinMax(props){
   return(
-    <StylFechaHoraMinMax style={{backgroundImage:`url(${props.image})`}} >
-      <p>{props.data.fecha}</p>
-      <p>hora: {props.data.hora}</p>
-      <p>min: {props.data.min}</p>
-      <p>max: {props.data.max}</p>
-      <p>{props.data.weather.name}</p>
+    <StylFechaHoraMinMax style={{backgroundImage:`url(${props["image"]})`}} >
+      <p>{props["data"]["fecha"]}</p>
+      <p>hora: {props["data"]["hora"]}</p>
+      <p>min: {props["data"]["min"]}</p>
+      <p>max: {props["data"]["max"]}</p>
+      <p>{props["data"]["weather"]["name"]}</p>
     </StylFechaHoraMinMax>
   );
 }

@@ -48,7 +48,7 @@ export default function GridFechaHoraMinMax(props){
 
   let imagen = null;
 
-  switch(props.data.weather.img + props.data.weather.dia){
+  switch(props["data"]["weather"]["img"] + props["data"]["weather"]["dia"]){
     case "despejado1":
       imagen = despejado_dia;
       break;
@@ -230,6 +230,6 @@ export default function GridFechaHoraMinMax(props){
   }
 
   return(
-    <StyledFechaHoraMinMax data={props.data} image={imagen} />
+    <StyledFechaHoraMinMax data={props["data"]} image={imagen} />
   );
 }

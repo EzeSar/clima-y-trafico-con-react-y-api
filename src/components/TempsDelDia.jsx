@@ -20,7 +20,7 @@ export default function TempsDelDia(props){
 
       <h3>&#127777; - Temperaturas del dia de hoy - &#127777;</h3>
 
-      <LineChart width={400} height={100} data={props.data}>
+      <LineChart width={400} height={100} data={props["data"]}>
         <Line type="monotone" dataKey="temp" stroke="#8884d8" />
         <XAxis dataKey="hora" />
         <YAxis />

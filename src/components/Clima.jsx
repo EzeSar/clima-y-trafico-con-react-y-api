@@ -27,7 +27,7 @@ export default function Clima(props){
     {hora:'18hs', temp:props.datos.hourly.temperature_2m[18]},
     {hora:'21hs', temp:props.datos.hourly.temperature_2m[21]},
   ];
-  
+
   let fecha_hora_min_max = {
     fecha:(props.datos.current_weather.time).split('T')[0],
     hora:(props.datos.current_weather.time).split('T')[1],

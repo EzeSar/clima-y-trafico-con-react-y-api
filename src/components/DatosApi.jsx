@@ -1,4 +1,4 @@
-let datos = {
+export const DatosApi = {
   "latitude": -31.375,
   "longitude": -64.125,
   "generationtime_ms": 0.11599063873291016,
@@ -213,5 +213,3 @@ let datos = {
       ]
   }
 };
-
-export const DatosApi = datos

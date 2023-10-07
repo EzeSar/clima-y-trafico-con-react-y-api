@@ -34,8 +34,9 @@ export default function Clima(props){
     min:props.datos.daily.temperature_2m_min[0],
     max:props.datos.daily.temperature_2m_max[0],
     weather:{
-      name:WeatherCodes[0].name,
-      img:WeatherCodes[0].img
+      name:WeatherCodes[props.datos.current_weather.weathercode].name,
+      img:WeatherCodes[props.datos.current_weather.weathercode].img,
+      dia:props.datos.current_weather.is_day
     }
   };
   

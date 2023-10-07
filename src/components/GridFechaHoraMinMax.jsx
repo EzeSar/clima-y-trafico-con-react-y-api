@@ -1,12 +1,12 @@
-import styled from "styled-components";
-import despejado_dia from '../assets/animation-weather/despejado_dia.svg';
-//import { ImagenClima } from "./ImagenClima";
+//import styled from "styled-components";
+import ImagenClima from "./ImagenClima";
+import StyledFechaHoraMinMax from "./StyledFechaHoraMinMax";
 
-const StylFechaHoraMinMax = styled.div`
+/*const StylFechaHoraMinMax = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(5, 1fr);
-  background-image: url(${despejado_dia});
+  background-image: url(${ImagenClima});
   background-size: cover;
   background-position: top,right;
   align-items: center;
@@ -20,16 +20,13 @@ const StylFechaHoraMinMax = styled.div`
   padding: 10px;
   gap: 10px;
   border: ridge 10px burlywood;
-`;
+`;*/
 
 export default function GridFechaHoraMinMax(props){
+
+  let imagen = {ImagenClima};
+
   return(
-    <StylFechaHoraMinMax>
-      <div>{props.data.fecha}</div>
-      <div>hora: {props.data.hora}</div>
-      <div>min: {props.data.min}</div>
-      <div>max: {props.data.max}</div>
-      <div>{props.data.weather.name}</div>
-    </StylFechaHoraMinMax>
+    <StyledFechaHoraMinMax data={props.data} image={imagen} />
   );
 }

@@ -1,4 +1,5 @@
 export const WeatherCodes = {
+
   "0": {"name":"despejado", "img":"despejado"},
   "1": {"name":"mayormente despejado", "img":"despejado"}, 
   "2": {"name":"parcialmente nublado", "img":"parcial_nublado"}, 
@@ -27,4 +28,5 @@ export const WeatherCodes = {
   "95": {"name":"tormenta leve o moderada", "img":"tormenta"},
   "96": {"name":"tormenta con granizo leve", "img":"tormenta_granizo_leve"}, 
   "99": {"name":"tormenta con granizo fuerte", "img":"tormenta_granizo_fuerte"}
+  
 };

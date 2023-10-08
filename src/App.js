@@ -10,9 +10,13 @@ function App() {
   useEffect(()=>{setDatosApi2(Datos)},[]);
 
   return (
+
     <div className="App">
+
       <Clima datos={datosApi2} />
+
       <Transporte />
+      
     </div>
   );
 }

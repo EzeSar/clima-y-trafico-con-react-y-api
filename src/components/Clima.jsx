@@ -1,16 +1,22 @@
 import styled from "styled-components";
 import TempActual from "./TempActual";
 import TempsDelDia from "./TempsDelDia";
-import GridFechaHoraMinMax from "./GridFechaHoraMinMax";
-import GridDatosDestacados from "./GridDatosDestacados";
+import FechaHoraMinMax from "./FechaHoraMinMax";
+import DatosDestacados from "./DatosDestacados";
 import { WeatherCodes } from "./WeatherCodes";
 
 const StyledGridClima = styled.div`
+  color: whitesmoke;
+  text-shadow:
+  1px 1px 1px black,
+  0 0 0.5em blue;
   display: grid;
   grid-template-columns: 1fr 1.5fr;
   grid-template-rows: 1fr 1.5fr;
   gap: 10px;
-  @media (max-width: 800px) {
+  align-items: top;
+  justify-items: center;
+  @media (max-width: 600px) {
     grid-template-columns: 1fr;
   }
 `;
@@ -61,11 +67,17 @@ export default function Clima(props){
   };
   
   return(
+
     <StyledGridClima>
+
+      <FechaHoraMinMax data={fecha_hora_min_max} />
+
+      <DatosDestacados data={datos_destacados} />
+
       <TempActual temp_actual={props["datos"]["current_weather"]["temperature"]}/>
+
       <TempsDelDia data={temps_del_dia} />
-      <GridFechaHoraMinMax data={fecha_hora_min_max} />
-      <GridDatosDestacados data={datos_destacados} />
+      
     </StyledGridClima>
   );
 }

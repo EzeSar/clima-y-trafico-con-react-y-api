@@ -4,7 +4,6 @@ import gps from "../assets/gps.gif";
 const StyledDiv = styled.div`
   text-align: center;
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
   color: red;
@@ -16,10 +15,13 @@ const StyledDiv = styled.div`
   background-image: url(${gps});
   background-size: cover;
   border-radius: 20px;
+  height: 600px;
 `;
 
 export default function Transporte(){
+
   return(
+    
     <StyledDiv>
        INFO ONLINE DE TRANSPORTE PUBLICO
     </StyledDiv>

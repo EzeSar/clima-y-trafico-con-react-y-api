@@ -1,4 +1,4 @@
-import StyledFechaHoraMinMax from "./StyledFechaHoraMinMax";
+import styled from "styled-components";
 import despejado_dia from "../assets/animation-weather/despejado_dia.svg";
 import despejado_noche from "../assets/animation-weather/despejado_noche.svg";
 import parcial_nublado_dia from "../assets/animation-weather/parcial_nublado_dia.svg";
@@ -44,7 +44,20 @@ import tormenta_granizo_leve_noche from "../assets/animation-weather/tormenta_gr
 import tormenta_granizo_fuerte_dia from "../assets/animation-weather/tormenta_granizo_fuerte_dia.svg";
 import tormenta_granizo_fuerte_noche from "../assets/animation-weather/tormenta_granizo_fuerte_noche.svg";
 
-export default function GridFechaHoraMinMax(props){
+const StylFechaHoraMinMax = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-size: cover;
+  background-position: center;
+  align-items: center;
+  justify-items: center;
+  padding: 10px;
+  gap: 10px;
+  width: 150px;
+  height: 300px;
+`;
+
+export default function FechaHoraMinMax(props){
 
   let imagen = null;
 
@@ -230,6 +243,19 @@ export default function GridFechaHoraMinMax(props){
   }
 
   return(
-    <StyledFechaHoraMinMax data={props["data"]} image={imagen} />
+
+    <StylFechaHoraMinMax style={{backgroundImage:`url(${imagen})`}} >
+
+      <p>{props["data"]["fecha"]}</p>
+
+      <p>hora: {props["data"]["hora"]}</p>
+
+      <p>min: {props["data"]["min"]}</p>
+
+      <p>max: {props["data"]["max"]}</p>
+
+      <p>{props["data"]["weather"]["name"]}</p>
+      
+    </StylFechaHoraMinMax>
   );
 }

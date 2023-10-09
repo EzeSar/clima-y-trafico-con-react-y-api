@@ -1,5 +1,4 @@
 .App {
-  background-color: #282c34;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;

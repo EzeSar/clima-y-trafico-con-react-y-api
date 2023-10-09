@@ -6,7 +6,6 @@ const StyledDivTempsDia = styled.div`
   flex-direction: column;
   justify-items: center;
   align-items: center;
-  padding: 30px;
 `;
 
 export default function TempsDelDia(props){
@@ -15,12 +14,12 @@ export default function TempsDelDia(props){
     
     <StyledDivTempsDia>
 
-      <h3>&#127777; - Temperaturas del dia de hoy - &#127777;</h3>
+      <p>&#127777; - Temperaturas del dia de hoy - &#127777;</p>
 
-      <LineChart width={350} height={100} data={props["data"]}>
-        <Line type="monotone" dataKey="temp" stroke="#96B6C5" />
-        <XAxis dataKey="hora" />
-        <YAxis />
+      <LineChart width={350} height={150} data={props["data"]}>
+        <Line type="monotone" dataKey="temp" stroke="#7393A7" />
+        <XAxis dataKey="hora" stroke="whitesmoke"/>
+        <YAxis stroke="whitesmoke"/>
         <Tooltip />
       </LineChart>
 

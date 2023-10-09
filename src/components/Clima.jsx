@@ -24,18 +24,18 @@ const StyledGridClima = styled.div`
 export default function Clima(props){
 
   let temps_del_dia = [
-    {hora:"00", temp:props["datos"]["hourly"]["temperature_2m"][0]},
-    {hora:"02", temp:props["datos"]["hourly"]["temperature_2m"][2]},
-    {hora:"04", temp:props["datos"]["hourly"]["temperature_2m"][4]},
-    {hora:"06", temp:props["datos"]["hourly"]["temperature_2m"][6]},
-    {hora:"08", temp:props["datos"]["hourly"]["temperature_2m"][8]},
-    {hora:"10", temp:props["datos"]["hourly"]["temperature_2m"][10]},
-    {hora:"12", temp:props["datos"]["hourly"]["temperature_2m"][12]},
-    {hora:"14", temp:props["datos"]["hourly"]["temperature_2m"][14]},
-    {hora:"16", temp:props["datos"]["hourly"]["temperature_2m"][16]},
-    {hora:"18", temp:props["datos"]["hourly"]["temperature_2m"][18]},
-    {hora:"20", temp:props["datos"]["hourly"]["temperature_2m"][20]},
-    {hora:"22", temp:props["datos"]["hourly"]["temperature_2m"][22]},
+    {"hora":"00", "temp":props["datos"]["hourly"]["temperature_2m"][0]},
+    {"hora":"02", "temp":props["datos"]["hourly"]["temperature_2m"][2]},
+    {"hora":"04", "temp":props["datos"]["hourly"]["temperature_2m"][4]},
+    {"hora":"06", "temp":props["datos"]["hourly"]["temperature_2m"][6]},
+    {"hora":"08", "temp":props["datos"]["hourly"]["temperature_2m"][8]},
+    {"hora":"10", "temp":props["datos"]["hourly"]["temperature_2m"][10]},
+    {"hora":"12", "temp":props["datos"]["hourly"]["temperature_2m"][12]},
+    {"hora":"14", "temp":props["datos"]["hourly"]["temperature_2m"][14]},
+    {"hora":"16", "temp":props["datos"]["hourly"]["temperature_2m"][16]},
+    {"hora":"18", "temp":props["datos"]["hourly"]["temperature_2m"][18]},
+    {"hora":"20", "temp":props["datos"]["hourly"]["temperature_2m"][20]},
+    {"hora":"22", "temp":props["datos"]["hourly"]["temperature_2m"][22]},
   ];
 
   let fecha_num_ordenada = (((props["datos"]["current_weather"]["time"]).split("T")[0]).split("-")).toReversed();

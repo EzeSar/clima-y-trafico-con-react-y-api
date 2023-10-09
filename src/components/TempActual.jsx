@@ -8,7 +8,7 @@ const StyledDivTemp = styled.div`
   align-items: center;
   justify-items: center;
   padding: 10px;
-  border: 7px solid #96B6C5;
+  border: 7px solid #7393A7;
   width: 150px;
   height: 150px;
 `;
@@ -35,7 +35,7 @@ export default function TempActual(props){
 
     <StyledDivTemp style={{backgroundColor:color}} >
 
-      <p>Temp. Actual :</p>
+      <p>Temperatura actual:</p>
 
       <Termometro value={props["temp_actual"]} />
       

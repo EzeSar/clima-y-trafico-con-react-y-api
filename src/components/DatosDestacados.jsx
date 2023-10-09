@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import uv from "../assets/uv.svg";
 import viento from "../assets/viento.svg";
-import amanecer from "../assets/amanecer.gif";
 import humedad from "../assets/humedad.svg";
 import umbrella from "../assets/umbrella.svg";
 import smoke from "../assets/smoke.svg";
+import sunrise from "../assets/sunrise.svg";
+import moonrise from "../assets/moonrise.svg";
 
 const GridDatosDest = styled.div`
   display: grid;
@@ -14,15 +15,14 @@ const GridDatosDest = styled.div`
 `;
 
 const StylDivDato = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: top;
-  justify-items: center;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
   text-align: center;
   background-size: cover;
   background-position: center;
   border-radius: 10%;
-  border: 7px solid #96B6C5;
+  border: 7px solid #7393A7;
   width: 100px;
   height: 100px;
 `;
@@ -32,28 +32,38 @@ export default function DatosDestacados(props){
 
     <GridDatosDest>
 
-      <StylDivDato style={{backgroundImage:`url(${uv})`}} >
-        <p>Indice UV: {props["data"]["uv"]}</p>
-      </StylDivDato>
-
-      <StylDivDato style={{backgroundImage:`url(${viento})`}} >
-        <p>Viento {props["data"]["viento"]}km/h</p>
-      </StylDivDato>
-
-      <StylDivDato style={{backgroundImage:`url(${amanecer})`}} >
-        <p>Amanece {props["data"]["amanece"]} Anochece {props["data"]["anochece"]}</p>
+      <StylDivDato style={{backgroundImage:`url(${umbrella})`}} >
+        <div>Probabilidad de lluvia:</div>
+        <div><b>{props["data"]["lluvia"]}%</b></div>
       </StylDivDato>
 
       <StylDivDato style={{backgroundImage:`url(${humedad})`}} >
-        <p>Humedad {props["data"]["humedad"]}%</p>
+        <div>Humedad:</div>
+        <div><b>{props["data"]["humedad"]}%</b></div>
+      </StylDivDato>
+
+      <StylDivDato style={{backgroundImage:`url(${viento})`}} >
+        <div>Viento:</div>
+        <div><b>{props["data"]["viento"]}km/h</b></div>
+      </StylDivDato>
+
+      <StylDivDato style={{backgroundImage:`url(${uv})`}} >
+        <div>Indice UV:</div>
+        <div><b>{props["data"]["uv"]}</b></div>
+      </StylDivDato>
+
+      <StylDivDato>
+        <div style={{backgroundImage:`url(${sunrise})`, backgroundSize:"cover", backgroundPosition: "center"}} >
+          Amanece: {props["data"]["amanece"]}
+        </div>
+        <div style={{backgroundImage:`url(${moonrise})`, backgroundSize:"cover", backgroundPosition: "center"}} >
+          Anochece: {props["data"]["anochece"]}
+        </div>
       </StylDivDato>
 
       <StylDivDato style={{backgroundImage:`url(${smoke})`}} >
-        <p>Visibilidad {props["data"]["visibilidad"]}km</p>
-      </StylDivDato>
-
-      <StylDivDato style={{backgroundImage:`url(${umbrella})`}} >
-        <p>Probabilidad de lluvia {props["data"]["lluvia"]}%</p>
+        <div>Visibilidad:</div>
+        <div><b>{props["data"]["visibilidad"]}km</b></div>
       </StylDivDato>
 
     </GridDatosDest>

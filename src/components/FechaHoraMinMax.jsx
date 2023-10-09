@@ -248,11 +248,11 @@ export default function FechaHoraMinMax(props){
 
       <p>{props["data"]["fecha"]}</p>
 
-      <p>hora: {props["data"]["hora"]}</p>
+      <p>Hora: {props["data"]["hora"]}</p>
 
-      <p>min: {props["data"]["min"]}</p>
+      <p>Minima: {props["data"]["min"]}°C</p>
 
-      <p>max: {props["data"]["max"]}</p>
+      <p>Maxima: {props["data"]["max"]}°C</p>
 
       <p>{props["data"]["weather"]["name"]}</p>
       

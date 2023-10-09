@@ -7,7 +7,7 @@ export default function Termometro(props){
     <Thermometer
     theme="dark"
     value={props["value"]}
-    max="50"
+    max="45"
     steps="1"
     format="°C"
     size="small"

@@ -1,10 +1,9 @@
 {
   "files": {
-    "main.css": "/clima_y_transporte/static/css/main.b4ebfd50.css",
-    "main.js": "/clima_y_transporte/static/js/main.1b225a5b.js",
+    "main.css": "/clima_y_transporte/static/css/main.a9ab3e7a.css",
+    "main.js": "/clima_y_transporte/static/js/main.d8d727b5.js",
     "static/js/787.52a6400d.chunk.js": "/clima_y_transporte/static/js/787.52a6400d.chunk.js",
     "static/media/gps.gif": "/clima_y_transporte/static/media/gps.8627f9765bc022e5242e.gif",
-    "static/media/amanecer.gif": "/clima_y_transporte/static/media/amanecer.4602331248d3913edb10.gif",
     "static/media/chubascos_nieve_fuertes_dia.svg": "/clima_y_transporte/static/media/chubascos_nieve_fuertes_dia.64a7aedf660538c7066ba580e12c69c3.svg",
     "static/media/chubascos_nieve_fuertes_noche.svg": "/clima_y_transporte/static/media/chubascos_nieve_fuertes_noche.9aafafbf7d31c6c5f696f0079ca96d72.svg",
     "static/media/nieve_densa_dia.svg": "/clima_y_transporte/static/media/nieve_densa_dia.a513fd19680f9292d210a0e61d4e7b23.svg",
@@ -49,18 +48,20 @@
     "static/media/uv.svg": "/clima_y_transporte/static/media/uv.b0d925d0e553a339a26220a1985b6efc.svg",
     "static/media/parcial_nublado_noche.svg": "/clima_y_transporte/static/media/parcial_nublado_noche.7c7c3446f71d6776edbc58c5ebe00ab9.svg",
     "static/media/parcial_nublado_dia.svg": "/clima_y_transporte/static/media/parcial_nublado_dia.22af82f41162d6ba6559909abad9e54d.svg",
+    "static/media/moonrise.svg": "/clima_y_transporte/static/media/moonrise.750bede2a7a4c5e87112cf38b4f89705.svg",
+    "static/media/sunrise.svg": "/clima_y_transporte/static/media/sunrise.7bd9ac1ef5536646bd0fe926afdfb495.svg",
     "static/media/despejado_noche.svg": "/clima_y_transporte/static/media/despejado_noche.35d2d7e81aaa60a015557dd9a085b70a.svg",
     "static/media/despejado_dia.svg": "/clima_y_transporte/static/media/despejado_dia.f1148f358aa1e13bee23b6cf1b54bac7.svg",
     "index.html": "/clima_y_transporte/index.html",
     "static/media/nublado_dia.svg": "/clima_y_transporte/static/media/nublado_dia.8a5788db9979257e9e7f313cbf51dfe7.svg",
     "static/media/nublado_noche.svg": "/clima_y_transporte/static/media/nublado_noche.8a5788db9979257e9e7f313cbf51dfe7.svg",
     "static/media/umbrella.svg": "/clima_y_transporte/static/media/umbrella.83a363f551ac4169c52b970967ea5fdd.svg",
-    "main.b4ebfd50.css.map": "/clima_y_transporte/static/css/main.b4ebfd50.css.map",
-    "main.1b225a5b.js.map": "/clima_y_transporte/static/js/main.1b225a5b.js.map",
+    "main.a9ab3e7a.css.map": "/clima_y_transporte/static/css/main.a9ab3e7a.css.map",
+    "main.d8d727b5.js.map": "/clima_y_transporte/static/js/main.d8d727b5.js.map",
     "787.52a6400d.chunk.js.map": "/clima_y_transporte/static/js/787.52a6400d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b4ebfd50.css",
-    "static/js/main.1b225a5b.js"
+    "static/css/main.a9ab3e7a.css",
+    "static/js/main.d8d727b5.js"
   ]
 }

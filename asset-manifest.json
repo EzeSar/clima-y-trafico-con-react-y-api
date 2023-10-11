@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/clima_y_transporte/static/css/main.a9ab3e7a.css",
-    "main.js": "/clima_y_transporte/static/js/main.dbeac140.js",
+    "main.js": "/clima_y_transporte/static/js/main.7eeabb4d.js",
     "static/js/787.52a6400d.chunk.js": "/clima_y_transporte/static/js/787.52a6400d.chunk.js",
     "static/media/gps.gif": "/clima_y_transporte/static/media/gps.8627f9765bc022e5242e.gif",
     "static/media/chubascos_nieve_fuertes_dia.svg": "/clima_y_transporte/static/media/chubascos_nieve_fuertes_dia.64a7aedf660538c7066ba580e12c69c3.svg",
@@ -57,11 +57,11 @@
     "static/media/nublado_noche.svg": "/clima_y_transporte/static/media/nublado_noche.8a5788db9979257e9e7f313cbf51dfe7.svg",
     "static/media/umbrella.svg": "/clima_y_transporte/static/media/umbrella.83a363f551ac4169c52b970967ea5fdd.svg",
     "main.a9ab3e7a.css.map": "/clima_y_transporte/static/css/main.a9ab3e7a.css.map",
-    "main.dbeac140.js.map": "/clima_y_transporte/static/js/main.dbeac140.js.map",
+    "main.7eeabb4d.js.map": "/clima_y_transporte/static/js/main.7eeabb4d.js.map",
     "787.52a6400d.chunk.js.map": "/clima_y_transporte/static/js/787.52a6400d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a9ab3e7a.css",
-    "static/js/main.dbeac140.js"
+    "static/js/main.7eeabb4d.js"
   ]
 }

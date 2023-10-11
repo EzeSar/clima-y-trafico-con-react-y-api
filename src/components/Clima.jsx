@@ -54,7 +54,7 @@ export default function Clima(props){
     }
   };
   
-  let hora_sola = (((props["datos"]["current_weather"]["time"]).split("T")[1]).split(":")[0]) * 1;
+  let hora_sola = Math.abs(((props["datos"]["current_weather"]["time"]).split("T")[1]).split(":")[0]);
   
   let datos_destacados = {
     uv:props["datos"]["daily"]["uv_index_max"][0],

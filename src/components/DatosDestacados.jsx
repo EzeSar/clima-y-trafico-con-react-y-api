@@ -28,6 +28,28 @@ const StylDivDato = styled.div`
 `;
 
 export default function DatosDestacados(props){
+  
+  let dir_vie = props["data"]["viento_dir"];
+  let viento_dir = null;
+
+  if(dir_vie<=22.5 || dir_vie>337.5){
+    viento_dir = "Norte";
+  } else if(dir_vie>22.5 && dir_vie<=67.5){
+    viento_dir = "N.E.";
+  } else if(dir_vie>67.5 && dir_vie<=112.5){
+    viento_dir = "Este";
+  } else if(dir_vie>112.5 && dir_vie<=157.5){
+    viento_dir = "S.E.";
+  } else if(dir_vie>157.5 && dir_vie<=202.5){
+    viento_dir = "Sur";
+  } else if(dir_vie>202.5 && dir_vie<=247.5){
+    viento_dir = "S.O.";
+  } else if(dir_vie>247.5 && dir_vie<=292.5){
+    viento_dir = "Oeste";
+  } else if(dir_vie>292.5 && dir_vie<=337.5){
+    viento_dir = "N.O.";
+  }
+
   return(
 
     <GridDatosDest>
@@ -44,7 +66,7 @@ export default function DatosDestacados(props){
 
       <StylDivDato style={{backgroundImage:`url(${viento})`}} >
         <div>Viento:</div>
-        <div><b>{props["data"]["viento"]}km/h</b></div>
+        <div><b>{viento_dir} {props["data"]["viento_km"]}km/h</b></div>
       </StylDivDato>
 
       <StylDivDato style={{backgroundImage:`url(${uv})`}} >

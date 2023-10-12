@@ -55,10 +55,11 @@ export default function Clima(props){
   };
   
   let hora_sola = Math.abs(((props["datos"]["current_weather"]["time"]).split("T")[1]).split(":")[0]);
-  
+
   let datos_destacados = {
     uv:props["datos"]["daily"]["uv_index_max"][0],
-    viento:props["datos"]["current_weather"]["windspeed"],
+    viento_km:props["datos"]["current_weather"]["windspeed"],
+    viento_dir:props["datos"]["current_weather"]["winddirection"],
     amanece:(props["datos"]["daily"]["sunrise"][0]).split("T")[1],
     anochece:(props["datos"]["daily"]["sunset"][0]).split("T")[1],
     humedad:props["datos"]["hourly"]["relativehumidity_2m"][hora_sola],

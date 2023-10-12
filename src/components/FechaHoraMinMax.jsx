@@ -45,16 +45,21 @@ import tormenta_granizo_fuerte_dia from "../assets/animation-weather/tormenta_gr
 import tormenta_granizo_fuerte_noche from "../assets/animation-weather/tormenta_granizo_fuerte_noche.svg";
 
 const StylFechaHoraMinMax = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
   background-size: cover;
   background-position: center;
   align-items: center;
   justify-items: center;
-  padding: 10px;
-  gap: 10px;
+  padding: 5px;
   width: 150px;
   height: 300px;
+`;
+
+const StyledBoton = styled.button`
+  background-color: whitesmoke;
+  border: 3px solid #7393A7;
+  border-radius: 10px;
 `;
 
 export default function FechaHoraMinMax(props){
@@ -255,6 +260,8 @@ export default function FechaHoraMinMax(props){
       <p>Maxima: {props["data"]["max"]}°C</p>
 
       <p>{props["data"]["weather"]["name"]}</p>
+
+      <StyledBoton onClick={()=>{props.callback(true)}} >Actualizar Datos</StyledBoton>
       
     </StylFechaHoraMinMax>
   );

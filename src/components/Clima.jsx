@@ -71,7 +71,7 @@ export default function Clima(props){
 
     <StyledGridClima>
 
-      <FechaHoraMinMax data={fecha_hora_min_max} />
+      <FechaHoraMinMax data={fecha_hora_min_max} callback={(boton) => {props.callback(boton)}} />
 
       <DatosDestacados data={datos_destacados} />
 

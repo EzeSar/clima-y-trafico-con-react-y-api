@@ -8,7 +8,7 @@ const StyledDivTemp = styled.div`
   align-items: center;
   justify-items: center;
   padding: 10px;
-  border: 7px solid #7393A7;
+  border: 3px solid #7393A7;
   width: 150px;
   height: 150px;
 `;

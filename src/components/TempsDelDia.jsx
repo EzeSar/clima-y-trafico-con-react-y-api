@@ -4,8 +4,11 @@ import { LineChart, Line, XAxis, YAxis, Tooltip } from "recharts";
 const StyledDivTempsDia = styled.div`
   display: flex;
   flex-direction: column;
-  justify-items: center;
   align-items: center;
+  border-radius: 20px;
+  border: 3px solid #7393A7;
+  height: 200px;
+  padding: 10px;
 `;
 
 export default function TempsDelDia(props){

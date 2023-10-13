@@ -11,7 +11,9 @@ const GridDatosDest = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr 1fr;
-  gap: 10px;
+  gap: 20px;
+  align-items: center;
+  height: 300px;
 `;
 
 const StylDivDato = styled.div`
@@ -22,33 +24,41 @@ const StylDivDato = styled.div`
   background-size: cover;
   background-position: center;
   border-radius: 10%;
-  border: 7px solid #7393A7;
+  border: 3px solid #7393A7;
   width: 100px;
   height: 100px;
 `;
 
 export default function DatosDestacados(props){
-  
-  let dir_vie = props["data"]["viento_dir"];
+      
   let viento_dir = null;
 
-  if(dir_vie<=22.5 || dir_vie>337.5){
-    viento_dir = "Norte";
-  } else if(dir_vie>22.5 && dir_vie<=67.5){
-    viento_dir = "N.E.";
-  } else if(dir_vie>67.5 && dir_vie<=112.5){
-    viento_dir = "Este";
-  } else if(dir_vie>112.5 && dir_vie<=157.5){
-    viento_dir = "S.E.";
-  } else if(dir_vie>157.5 && dir_vie<=202.5){
-    viento_dir = "Sur";
-  } else if(dir_vie>202.5 && dir_vie<=247.5){
-    viento_dir = "S.O.";
-  } else if(dir_vie>247.5 && dir_vie<=292.5){
-    viento_dir = "Oeste";
-  } else if(dir_vie>292.5 && dir_vie<=337.5){
-    viento_dir = "N.O.";
+  function DirDelViento(dir){
+
+    if(dir<=22.5 || dir>337.5){
+      viento_dir = "Norte";
+    } else if(dir>22.5 && dir<=67.5){
+      viento_dir = "N.E.";
+    } else if(dir>67.5 && dir<=112.5){
+      viento_dir = "Este";
+    } else if(dir>112.5 && dir<=157.5){
+      viento_dir = "S.E.";
+    } else if(dir>157.5 && dir<=202.5){
+      viento_dir = "Sur";
+    } else if(dir>202.5 && dir<=247.5){
+      viento_dir = "S.O.";
+    } else if(dir>247.5 && dir<=292.5){
+      viento_dir = "Oeste";
+    } else if(dir>292.5 && dir<=337.5){
+      viento_dir = "N.O.";
+    } else {
+      viento_dir = "s/d";
+    }
+
+    return(viento_dir);
   }
+
+  DirDelViento(props["data"]["viento_dir"]);
 
   return(
 

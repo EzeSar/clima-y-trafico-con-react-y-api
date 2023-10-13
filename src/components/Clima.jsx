@@ -14,10 +14,12 @@ const StyledGridClima = styled.div`
   grid-template-columns: 1fr 1.5fr;
   grid-template-rows: 1fr 1.5fr;
   gap: 10px;
-  align-items: top;
+  align-items: center;
   justify-items: center;
+  height: 600px;
   @media (max-width: 600px) {
     grid-template-columns: 1fr;
+    height: 1200px;
   }
 `;
 

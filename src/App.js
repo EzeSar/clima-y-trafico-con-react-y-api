@@ -1,11 +1,10 @@
 import "./App.css";
 import Clima from "./components/Clima";
 import Transporte from "./components/Transporte";import { useState, useEffect } from "react";
-import { Datos } from "./components/Datos";
 
 function App() {
 
-  let [datosApi, setDatosApi] = useState(Datos);
+  let [datosApi, setDatosApi] = useState(null);
 
   let [cargando, setCargando] = useState(true);
 
@@ -30,7 +29,7 @@ function App() {
 
     <div className="App">
 
-      {cargando && <h1>ESPERANDO DATOS...</h1>}
+      {cargando && <h1 style={{color:"whitesmoke", textAlign:"center"}} >ESPERANDO DATOS...</h1>}
 
       {!cargando && <Clima datos={datosApi} callback={(boton) => {setActualizar(boton)}} />}
 

@@ -1,4 +1,4 @@
-export const Datos = {
+export const DatosEstaticos = {
 
   "latitude": -31.375,
   "longitude": -64.125,

@@ -11,6 +11,7 @@ const StyledDivTemp = styled.div`
   border: 3px solid #7393A7;
   width: 150px;
   height: 150px;
+  margin: 20px;
 `;
 
 export default function TempActual(props){

@@ -73,13 +73,13 @@ export default function Clima(props){
 
     <StyledGridClima>
 
-      <FechaHoraMinMax data={fecha_hora_min_max} callback={(boton) => {props.callback(boton)}} />
-
       <DatosDestacados data={datos_destacados} />
 
-      <TempActual temp_actual={props["datos"]["current_weather"]["temperature"]}/>
+      <FechaHoraMinMax data={fecha_hora_min_max} callback={(boton) => {props.callback(boton)}} />
 
       <TempsDelDia data={temps_del_dia} />
+
+      <TempActual temp_actual={props["datos"]["current_weather"]["temperature"]}/>
       
     </StyledGridClima>
   );

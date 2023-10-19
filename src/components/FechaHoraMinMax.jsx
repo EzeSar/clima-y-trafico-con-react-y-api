@@ -62,6 +62,7 @@ const StyledBoton = styled.button`
   background-color: whitesmoke;
   border: 3px solid #7393A7;
   border-radius: 10px;
+  cursor: pointer;
 `;
 
 export default function FechaHoraMinMax(props){

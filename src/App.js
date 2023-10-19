@@ -11,7 +11,7 @@ function App() {
       <Clima />
 
       <Transporte />
-      
+
     </div>
   );
 }

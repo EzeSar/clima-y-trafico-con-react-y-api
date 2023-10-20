@@ -5,6 +5,8 @@ import { Marker as LeafletMarker, icon } from 'leaflet'
 import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png'
 import iconUrl from 'leaflet/dist/images/marker-icon.png'
 import shadowUrl from 'leaflet/dist/images/marker-shadow.png'
+import { DatosBondis } from "./DatosBondis";
+import { useState } from "react";
 
 //Configuracion del icon a usar en Marker
 LeafletMarker.prototype.options.icon = icon({
@@ -18,7 +20,6 @@ LeafletMarker.prototype.options.icon = icon({
   shadowSize: [41, 41],
 });
 
-
 const StyledDiv = styled.div`
   text-align: center;
   display: flex;
@@ -31,21 +32,64 @@ const StyledDiv = styled.div`
 
 export default function Transporte() {
 
+  let position = {
+    lat: -34.6037,
+    lng: -58.3816
+  };
+
+  let lineasActivas = [];
+  DatosBondis.map((bondi) => {
+    return (lineasActivas.push(bondi["route_short_name"]))});
+  lineasActivas = (Array.from(new Set(lineasActivas))).sort();
+
+  let [lineaElegida, setLineaElegida] = useState(null);
+
+  function handleChange(event) {
+    setLineaElegida(DatosBondis.filter((bondi) => bondi["route_short_name"] === event.target.value));
+  };
+
   return (
 
     <StyledDiv>
       INFO ONLINE DE TRANSPORTE PUBLICO
-      <MapContainer style={{width:"100%", height:"100%" }} center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
+
+      <label>
+
+        Selecciona una linea :
+
+        <select value={""} onChange={handleChange}>
+
+          {lineasActivas.map((option) => (
+
+            <option value={option}>{option}</option>
+
+          ))}
+
+        </select>
+
+      </label>
+
+      {lineaElegida && <MapContainer style={{ width: "100%", height: "100%" }} center={position} zoom={10} scrollWheelZoom={false}>
+
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={[51.505, -0.09]}>
-          <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
-          </Popup>
-        </Marker>
-      </MapContainer>
+
+        {lineaElegida.map((bondi) => {
+          return (
+
+            <Marker position={[bondi["latitude"], bondi["longitude"]]}>
+              <Popup>
+                Linea: {bondi["route_short_name"]}
+                <br />Destino: {bondi["trip_headsign"]}
+                <br />Empresa: {bondi["agency_name"]}
+                <br />Velocidad: {bondi["speed"]}km/h
+              </Popup>
+            </Marker>)
+        })}
+
+      </MapContainer>}
     </StyledDiv>
   );
 }

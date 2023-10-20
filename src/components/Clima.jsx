@@ -5,7 +5,7 @@ import FechaHoraMinMax from "./FechaHoraMinMax";
 import DatosDestacados from "./DatosDestacados";
 import { WeatherCodes } from "./WeatherCodes";
 import { useState, useEffect } from "react";
-import { DatosEstaticos } from "./DatosEstaticos";
+import { DatosClima } from "./DatosClima";
 
 const StyledGridClima = styled.div`
   color: whitesmoke;
@@ -27,7 +27,7 @@ const StyledGridClima = styled.div`
 
 export default function Clima(){
 
-  let [datosApi, setDatosApi] = useState(DatosEstaticos);
+  let [datosApi, setDatosApi] = useState(DatosClima);
 
   let [cargando, setCargando] = useState(true);
 

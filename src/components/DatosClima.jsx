@@ -1,4 +1,4 @@
-export const DatosEstaticos = {
+export const DatosClima = {
 
   "latitude": -31.375,
   "longitude": -64.125,

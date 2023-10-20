@@ -27,7 +27,11 @@ const StyledDiv = styled.div`
   align-items: center;
   justify-content: center;
   color: whitesmoke;
+  text-shadow:
+  1px 1px 1px black,
+  0 0 0.5em blue;
   height: 600px;
+  gap: 3px;
 `;
 
 export default function Transporte() {
@@ -38,25 +42,28 @@ export default function Transporte() {
   };
 
   let [datosApi, setDatosApi] = useState(DatosBondis);
+  let [cargando, setCargando] = useState(true);
 
-  useEffect(()=>{
+  useEffect(() => {
+    const interval = setInterval(() => {
 
-    async function obtenerDatosDeApi(){
-      //setCargando(true);
-      let respuesta = await fetch("https://apitransporte.buenosaires.gob.ar/colectivos/vehiclePositionsSimple?client_id=cb6b18c84b3b484d98018a791577af52&client_secret=3e3DB105Fbf642Bf88d5eeB8783EE1E6");
-      let datos = await respuesta.json();
-      setDatosApi(datos);
-      //setCargando(false);
-      //setActualizar(false);
-    }
+      async function obtenerDatosDeApi() {
+        setCargando(true);
+        let respuesta = await fetch("https://apitransporte.buenosaires.gob.ar/colectivos/vehiclePositionsSimple?client_id=cb6b18c84b3b484d98018a791577af52&client_secret=3e3DB105Fbf642Bf88d5eeB8783EE1E6");
+        let datos = await respuesta.json();
+        setDatosApi(datos);
+        setCargando(false);
+      }
+      obtenerDatosDeApi();
 
-    obtenerDatosDeApi();
-
-  },[]);
+    }, 31000);
+    return () => clearInterval(interval);
+  }, []);
 
   let lineasActivas = [];
   datosApi.map((bondi) => {
-    return (lineasActivas.push(bondi["route_short_name"]))});
+    return (lineasActivas.push(bondi["route_short_name"]))
+  });
   lineasActivas = (Array.from(new Set(lineasActivas))).sort();
 
   let [lineaElegida, setLineaElegida] = useState([]);
@@ -68,9 +75,11 @@ export default function Transporte() {
   return (
 
     <StyledDiv>
-      INFO ONLINE DE TRANSPORTE PUBLICO
+      <h2>INFO ONLINE DE TRANSPORTE PUBLICO</h2>
 
-      <label>
+      {cargando && <h4>ACTUALIZANDO DATOS...</h4>}
+
+      {!cargando && <label>
 
         Selecciona una linea :
 
@@ -84,7 +93,7 @@ export default function Transporte() {
 
         </select>
 
-      </label>
+      </label>}
 
       <MapContainer style={{ width: "100%", height: "100%" }} center={position} zoom={10} scrollWheelZoom={false}>
 

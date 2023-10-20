@@ -42,7 +42,7 @@ export default function Transporte() {
     return (lineasActivas.push(bondi["route_short_name"]))});
   lineasActivas = (Array.from(new Set(lineasActivas))).sort();
 
-  let [lineaElegida, setLineaElegida] = useState(null);
+  let [lineaElegida, setLineaElegida] = useState([]);
 
   function handleChange(event) {
     setLineaElegida(DatosBondis.filter((bondi) => bondi["route_short_name"] === event.target.value));
@@ -69,16 +69,12 @@ export default function Transporte() {
 
       </label>
 
-      {lineaElegida && <MapContainer style={{ width: "100%", height: "100%" }} center={position} zoom={10} scrollWheelZoom={false}>
+      <MapContainer style={{ width: "100%", height: "100%" }} center={position} zoom={10} scrollWheelZoom={false}>
 
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
+        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
         {lineaElegida.map((bondi) => {
           return (
-
             <Marker position={[bondi["latitude"], bondi["longitude"]]}>
               <Popup>
                 Linea: {bondi["route_short_name"]}
@@ -89,7 +85,7 @@ export default function Transporte() {
             </Marker>)
         })}
 
-      </MapContainer>}
+      </MapContainer>
     </StyledDiv>
   );
 }

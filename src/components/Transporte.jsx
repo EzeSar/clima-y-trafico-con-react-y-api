@@ -5,8 +5,8 @@ import { Marker as LeafletMarker, icon } from 'leaflet'
 import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png'
 import iconUrl from 'leaflet/dist/images/marker-icon.png'
 import shadowUrl from 'leaflet/dist/images/marker-shadow.png'
+import { useState, useEffect } from "react";
 import { DatosBondis } from "./DatosBondis";
-import { useState } from "react";
 
 //Configuracion del icon a usar en Marker
 LeafletMarker.prototype.options.icon = icon({
@@ -37,15 +37,32 @@ export default function Transporte() {
     lng: -58.3816
   };
 
+  let [datosApi, setDatosApi] = useState(DatosBondis);
+
+  useEffect(()=>{
+
+    async function obtenerDatosDeApi(){
+      //setCargando(true);
+      let respuesta = await fetch("https://apitransporte.buenosaires.gob.ar/colectivos/vehiclePositionsSimple?client_id=cb6b18c84b3b484d98018a791577af52&client_secret=3e3DB105Fbf642Bf88d5eeB8783EE1E6");
+      let datos = await respuesta.json();
+      setDatosApi(datos);
+      //setCargando(false);
+      //setActualizar(false);
+    }
+
+    obtenerDatosDeApi();
+
+  },[]);
+
   let lineasActivas = [];
-  DatosBondis.map((bondi) => {
+  datosApi.map((bondi) => {
     return (lineasActivas.push(bondi["route_short_name"]))});
   lineasActivas = (Array.from(new Set(lineasActivas))).sort();
 
   let [lineaElegida, setLineaElegida] = useState([]);
 
   function handleChange(event) {
-    setLineaElegida(DatosBondis.filter((bondi) => bondi["route_short_name"] === event.target.value));
+    setLineaElegida(datosApi.filter((bondi) => bondi["route_short_name"] === event.target.value));
   };
 
   return (

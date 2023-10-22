@@ -1,24 +1,9 @@
 import styled from "styled-components";
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import { Marker as LeafletMarker, icon } from 'leaflet'
-import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png'
-import iconUrl from 'leaflet/dist/images/marker-icon.png'
-import shadowUrl from 'leaflet/dist/images/marker-shadow.png'
 import { useState, useEffect } from "react";
 import { DatosBondis } from "./DatosBondis";
-
-//Configuracion del icon a usar en Marker
-LeafletMarker.prototype.options.icon = icon({
-  iconRetinaUrl,
-  iconUrl,
-  shadowUrl,
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  tooltipAnchor: [16, -28],
-  shadowSize: [41, 41],
-});
+import L from 'leaflet';
 
 const StyledDiv = styled.div`
   text-align: center;
@@ -36,17 +21,18 @@ const StyledDiv = styled.div`
 
 export default function Transporte() {
 
-  let position = {
-    lat: -34.6037,
-    lng: -58.3816
-  };
+  //Configuracion del icon a usar en Marker
+  const busIcon = L.icon({
+    iconUrl: require('../assets/bus.png'),
+    iconSize: [25, 25],
+  });
 
   let [datosApi, setDatosApi] = useState(DatosBondis);
-  let [cargando, setCargando] = useState(true);
+
+  let [cargando, setCargando] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
-
       async function obtenerDatosDeApi() {
         setCargando(true);
         let respuesta = await fetch("https://apitransporte.buenosaires.gob.ar/colectivos/vehiclePositionsSimple?client_id=cb6b18c84b3b484d98018a791577af52&client_secret=3e3DB105Fbf642Bf88d5eeB8783EE1E6");
@@ -55,7 +41,6 @@ export default function Transporte() {
         setCargando(false);
       }
       obtenerDatosDeApi();
-
     }, 31000);
     return () => clearInterval(interval);
   }, []);
@@ -71,6 +56,19 @@ export default function Transporte() {
   function handleChange(event) {
     setLineaElegida(datosApi.filter((bondi) => bondi["route_short_name"] === event.target.value));
   };
+
+  function posicionPromedio() {
+    let latitudes = [];
+    let longitudes = [];
+    lineaElegida.map((bondi) => (latitudes.push(bondi["latitude"])));
+    let promLatitudes = (latitudes.reduce((a, b) => a + b,latitudes[0])) / latitudes.length;
+    lineaElegida.map((bondi) => (longitudes.push(bondi["longitude"])));
+    let promLongitudes = (longitudes.reduce((a, b) => a + b,longitudes[0])) / longitudes.length;
+    console.log({ lat: promLatitudes, long: promLongitudes });
+    setPosition({ lat: promLatitudes, long: promLongitudes });
+  };
+
+  let [position, setPosition] = useState({ lat: -34.6037, lng: -58.3816 });
 
   return (
 
@@ -95,13 +93,15 @@ export default function Transporte() {
 
       </label>}
 
+      <button onClick={posicionPromedio}>Centrar Mapa</button>
+
       <MapContainer style={{ width: "100%", height: "100%" }} center={position} zoom={10} scrollWheelZoom={false}>
 
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
         {lineaElegida.map((bondi) => {
           return (
-            <Marker position={[bondi["latitude"], bondi["longitude"]]}>
+            <Marker position={[bondi["latitude"], bondi["longitude"]]} icon={busIcon}>
               <Popup>
                 Linea: {bondi["route_short_name"]}
                 <br />Destino: {bondi["trip_headsign"]}

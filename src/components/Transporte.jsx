@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useState, useEffect } from "react";
 import { DatosBondis } from "./DatosBondis";
@@ -53,22 +53,34 @@ export default function Transporte() {
 
   let [lineaElegida, setLineaElegida] = useState([]);
 
+  let [eleccion, setEleccion] = useState(false);
+
   function handleChange(event) {
     setLineaElegida(datosApi.filter((bondi) => bondi["route_short_name"] === event.target.value));
+    setEleccion(true);
   };
 
   function posicionPromedio() {
     let latitudes = [];
     let longitudes = [];
+    let promLat;
+    let promLng;
     lineaElegida.map((bondi) => (latitudes.push(bondi["latitude"])));
-    let promLatitudes = (latitudes.reduce((a, b) => a + b,latitudes[0])) / latitudes.length;
     lineaElegida.map((bondi) => (longitudes.push(bondi["longitude"])));
-    let promLongitudes = (longitudes.reduce((a, b) => a + b,longitudes[0])) / longitudes.length;
-    console.log({ lat: promLatitudes, long: promLongitudes });
-    setPosition({ lat: promLatitudes, long: promLongitudes });
+    promLat = (latitudes.reduce((a, b) => a + b, latitudes[0])) / latitudes.length;
+    promLng = (longitudes.reduce((a, b) => a + b, longitudes[0])) / longitudes.length;
+    setPosicion({ lat: promLat, lng: promLng });
   };
 
-  let [position, setPosition] = useState({ lat: -34.6037, lng: -58.3816 });
+  let [posicion, setPosicion] = useState({ lat: -34.6037, lng: -58.3816 });
+
+  function SetViewOnClick({ coords }) {
+    const map = useMap();
+    map.setView(coords, 10);
+    console.log(coords);
+
+    return null;
+  }
 
   return (
 
@@ -93,9 +105,9 @@ export default function Transporte() {
 
       </label>}
 
-      <button onClick={posicionPromedio}>Centrar Mapa</button>
+      {eleccion && <button onClick={posicionPromedio}>Centrar Mapa</button>}
 
-      <MapContainer style={{ width: "100%", height: "100%" }} center={position} zoom={10} scrollWheelZoom={false}>
+      <MapContainer style={{ width: "100%", height: "100%" }} center={posicion} zoom={9} scrollWheelZoom={false}>
 
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
@@ -110,7 +122,9 @@ export default function Transporte() {
               </Popup>
             </Marker>)
         })}
-
+        <SetViewOnClick
+          coords={posicion}
+        />
       </MapContainer>
     </StyledDiv>
   );

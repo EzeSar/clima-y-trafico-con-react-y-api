@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useState, useEffect } from "react";
-import { DatosBondis } from "./DatosBondis";
 import L from 'leaflet';
 
 const StyledDiv = styled.div`
@@ -27,38 +26,91 @@ export default function Transporte() {
     iconSize: [25, 25],
   });
 
-  let [datosApi, setDatosApi] = useState(DatosBondis);
+  let posicion = ({ lat: -34.6037, lng: -58.3816 });
+
+  let [datosApi, setDatosApi] = useState(null);
 
   let [cargando, setCargando] = useState(false);
 
+  //useEffect sin actualizacion cada 31segundos...
+  useEffect(() => {
+    setCargando(true);
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://datosabiertos-transporte-apis.buenosaires.gob.ar:443/colectivos/vehiclePositionsSimple?&client_id=cb6b18c84b3b484d98018a791577af52&client_secret=3e3DB105Fbf642Bf88d5eeB8783EE1E6');
+        if (!response.ok) {
+          throw new Error('No se pudo obtener la información');
+        }
+        const jsonData = await response.json();
+        setDatosApi(jsonData);
+        setCargando(false);
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  /*useEffect igual pero que se actualiza cada 31 segundos...
+
+  useEffect(() => {
+    setCargando(true);
+    const interval = setInterval(() => {
+      const fetchData = async () => {
+        try {
+          const response = await fetch('https://datosabiertos-transporte-apis.buenosaires.gob.ar:443/colectivos/vehiclePositionsSimple?&client_id=cb6b18c84b3b484d98018a791577af52&client_secret=3e3DB105Fbf642Bf88d5eeB8783EE1E6');
+          if (!response.ok) {
+            throw new Error('No se pudo obtener la información');
+          }
+          const jsonData = await response.json();
+          setDatosApi(jsonData);
+          setActualizar(true);
+          setCargando(false);
+        } catch (error) {
+          console.error('Error:', error);
+        }
+      };
+
+      fetchData();
+    }, 31000);
+    return () => clearInterval(interval);
+  }, []);*/
+
+  let lineasActivas = [];
+
+  if (datosApi) {
+    datosApi.map((bondi) => {
+      return (lineasActivas.push(bondi["route_short_name"]))
+    })
+  };
+
+  lineasActivas = (Array.from(new Set(lineasActivas))).sort();
+
+  let [lineaElegida, setLineaElegida] = useState([]);
+
+  let [bondiElegido, setBondiElegido] = useState('');
+
+  function handleChange(event) {
+    let linea = (datosApi.filter((bondi) => bondi["route_short_name"] === event.target.value));
+    setLineaElegida(linea);
+    setBondiElegido(linea[0]["route_short_name"]);
+  };
+
+  /*otras variaciones desactivadas por ahora...
   useEffect(() => {
     const interval = setInterval(() => {
       async function obtenerDatosDeApi() {
         setCargando(true);
-        let respuesta = await fetch("https://apitransporte.buenosaires.gob.ar/colectivos/vehiclePositionsSimple?client_id=cb6b18c84b3b484d98018a791577af52&client_secret=3e3DB105Fbf642Bf88d5eeB8783EE1E6");
+        let idRuta = lineaElegida[0]['route_id'];
+        let respuesta = await fetch(`https://datosabiertos-transporte-apis.buenosaires.gob.ar:443/colectivos/vehiclePositionsSimple?${idRuta}&client_id=cb6b18c84b3b484d98018a791577af52&client_secret=3e3DB105Fbf642Bf88d5eeB8783EE1E6`);
         let datos = await respuesta.json();
-        setDatosApi(datos);
+        setLineaElegida(datos);
         setCargando(false);
       }
       obtenerDatosDeApi();
     }, 31000);
     return () => clearInterval(interval);
-  }, []);
-
-  let lineasActivas = [];
-  datosApi.map((bondi) => {
-    return (lineasActivas.push(bondi["route_short_name"]))
-  });
-  lineasActivas = (Array.from(new Set(lineasActivas))).sort();
-
-  let [lineaElegida, setLineaElegida] = useState([]);
-
-  let [eleccion, setEleccion] = useState(false);
-
-  function handleChange(event) {
-    setLineaElegida(datosApi.filter((bondi) => bondi["route_short_name"] === event.target.value));
-    setEleccion(true);
-  };
+  }, [lineaElegida]);
 
   function posicionPromedio() {
     let latitudes = [];
@@ -72,15 +124,11 @@ export default function Transporte() {
     setPosicion({ lat: promLat, lng: promLng });
   };
 
-  let [posicion, setPosicion] = useState({ lat: -34.6037, lng: -58.3816 });
-
-  function SetViewOnClick({ coords }) {
+  function SetViewOnClick({ dato }) {
     const map = useMap();
-    map.setView(coords, 10);
-    console.log(coords);
-
+    map.setView(posicion, 12);
     return null;
-  }
+  };*/
 
   return (
 
@@ -93,19 +141,11 @@ export default function Transporte() {
 
         Selecciona una linea :
 
-        <select value={""} onChange={handleChange}>
-
-          {lineasActivas.map((option) => (
-
-            <option value={option}>{option}</option>
-
-          ))}
-
+        <select value={bondiElegido} onChange={handleChange}>
+          {lineasActivas.map((option) => (<option id={option} value={option}>{option}</option>))}
         </select>
 
       </label>}
-
-      {eleccion && <button onClick={posicionPromedio}>Centrar Mapa</button>}
 
       <MapContainer style={{ width: "100%", height: "100%" }} center={posicion} zoom={9} scrollWheelZoom={false}>
 
@@ -120,11 +160,9 @@ export default function Transporte() {
                 <br />Empresa: {bondi["agency_name"]}
                 <br />Velocidad: {bondi["speed"]}km/h
               </Popup>
-            </Marker>)
+            </Marker>
+          )
         })}
-        <SetViewOnClick
-          coords={posicion}
-        />
       </MapContainer>
     </StyledDiv>
   );

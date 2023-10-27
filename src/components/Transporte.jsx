@@ -20,7 +20,6 @@ const StyledDiv = styled.div`
 
 export default function Transporte() {
 
-  //Configuracion del icon a usar en Marker
   const busIcon = L.icon({
     iconUrl: require('../assets/bus.png'),
     iconSize: [25, 25],
@@ -30,31 +29,9 @@ export default function Transporte() {
 
   let [datosApi, setDatosApi] = useState(null);
 
-  let [cargando, setCargando] = useState(false);
-
-  //useEffect sin actualizacion cada 31segundos...
-  useEffect(() => {
-    setCargando(true);
-    const fetchData = async () => {
-      try {
-        const response = await fetch('https://datosabiertos-transporte-apis.buenosaires.gob.ar:443/colectivos/vehiclePositionsSimple?&client_id=cb6b18c84b3b484d98018a791577af52&client_secret=3e3DB105Fbf642Bf88d5eeB8783EE1E6');
-        if (!response.ok) {
-          throw new Error('No se pudo obtener la información');
-        }
-        const jsonData = await response.json();
-        setDatosApi(jsonData);
-        setCargando(false);
-      } catch (error) {
-        console.error('Error:', error);
-      }
-    };
-    fetchData();
-  }, []);
-
-  /*useEffect igual pero que se actualiza cada 31 segundos...
+  let [cargando, setCargando] = useState(true);
 
   useEffect(() => {
-    setCargando(true);
     const interval = setInterval(() => {
       const fetchData = async () => {
         try {
@@ -64,17 +41,16 @@ export default function Transporte() {
           }
           const jsonData = await response.json();
           setDatosApi(jsonData);
-          setActualizar(true);
           setCargando(false);
+          console.log("datosApi actualizados")
         } catch (error) {
           console.error('Error:', error);
         }
       };
-
       fetchData();
     }, 31000);
     return () => clearInterval(interval);
-  }, []);*/
+  }, []);
 
   let lineasActivas = [];
 
@@ -97,21 +73,6 @@ export default function Transporte() {
   };
 
   /*otras variaciones desactivadas por ahora...
-  useEffect(() => {
-    const interval = setInterval(() => {
-      async function obtenerDatosDeApi() {
-        setCargando(true);
-        let idRuta = lineaElegida[0]['route_id'];
-        let respuesta = await fetch(`https://datosabiertos-transporte-apis.buenosaires.gob.ar:443/colectivos/vehiclePositionsSimple?${idRuta}&client_id=cb6b18c84b3b484d98018a791577af52&client_secret=3e3DB105Fbf642Bf88d5eeB8783EE1E6`);
-        let datos = await respuesta.json();
-        setLineaElegida(datos);
-        setCargando(false);
-      }
-      obtenerDatosDeApi();
-    }, 31000);
-    return () => clearInterval(interval);
-  }, [lineaElegida]);
-
   function posicionPromedio() {
     let latitudes = [];
     let longitudes = [];
@@ -142,7 +103,7 @@ export default function Transporte() {
         Selecciona una linea :
 
         <select value={bondiElegido} onChange={handleChange}>
-          {lineasActivas.map((option) => (<option id={option} value={option}>{option}</option>))}
+          {lineasActivas.map((option) => (<option value={option}>{option}</option>))}
         </select>
 
       </label>}
@@ -166,4 +127,4 @@ export default function Transporte() {
       </MapContainer>
     </StyledDiv>
   );
-}
+};

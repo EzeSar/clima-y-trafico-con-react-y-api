@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { MapContainer, TileLayer, Marker, Popup, } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useState, useEffect } from "react";
 import L from 'leaflet';
@@ -25,11 +25,13 @@ export default function Transporte() {
     iconSize: [25, 25],
   });
 
-  let posicion = ({ lat: -34.6037, lng: -58.3816 });
+  let [posicion, setPosicion] = useState({ lat: -34.6037, lng: -58.3816 });
 
   let [datosApi, setDatosApi] = useState(null);
 
   let [cargando, setCargando] = useState(true);
+
+  let [errorApi, setErrorApi] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -37,11 +39,12 @@ export default function Transporte() {
         try {
           const response = await fetch('https://datosabiertos-transporte-apis.buenosaires.gob.ar:443/colectivos/vehiclePositionsSimple?&client_id=cb6b18c84b3b484d98018a791577af52&client_secret=3e3DB105Fbf642Bf88d5eeB8783EE1E6');
           if (!response.ok) {
-            throw new Error('No se pudo obtener la información');
+            setErrorApi(true);
           }
           const jsonData = await response.json();
           setDatosApi(jsonData);
           setCargando(false);
+          setErrorApi(false);
           console.log("datosApi actualizados")
         } catch (error) {
           console.error('Error:', error);
@@ -56,7 +59,7 @@ export default function Transporte() {
 
   if (datosApi) {
     datosApi.map((bondi) => {
-      return (lineasActivas.push(bondi["route_short_name"]))
+      return (lineasActivas.push(`${bondi["route_short_name"]} - ${bondi["trip_headsign"]}`))
     })
   };
 
@@ -67,29 +70,24 @@ export default function Transporte() {
   let [bondiElegido, setBondiElegido] = useState('');
 
   function handleChange(event) {
-    let linea = (datosApi.filter((bondi) => bondi["route_short_name"] === event.target.value));
+    let linea = (datosApi.filter((bondi) => bondi["route_short_name"] === (event.target.value).split(" - ")[0]));
     setLineaElegida(linea);
-    setBondiElegido(linea[0]["route_short_name"]);
+    setBondiElegido(`${linea[0]["route_short_name"]} - ${linea[0]["trip_headsign"]}`);
   };
 
-  /*otras variaciones desactivadas por ahora...
   function posicionPromedio() {
-    let latitudes = [];
-    let longitudes = [];
-    let promLat;
-    let promLng;
-    lineaElegida.map((bondi) => (latitudes.push(bondi["latitude"])));
-    lineaElegida.map((bondi) => (longitudes.push(bondi["longitude"])));
-    promLat = (latitudes.reduce((a, b) => a + b, latitudes[0])) / latitudes.length;
-    promLng = (longitudes.reduce((a, b) => a + b, longitudes[0])) / longitudes.length;
-    setPosicion({ lat: promLat, lng: promLng });
+    const sumalat = lineaElegida.map(item => item.latitude).reduce((prev, curr) => prev + curr, 0);
+    const promlat = (sumalat/lineaElegida.length);
+    const sumalng = lineaElegida.map(item => item.longitude).reduce((prev, curr) => prev + curr, 0);
+    const promlng = (sumalng/lineaElegida.length);
+    setPosicion({ lat: promlat, lng: promlng });
   };
 
-  function SetViewOnClick({ dato }) {
+  function SetViewOnClick() {
     const map = useMap();
-    map.setView(posicion, 12);
+    map.setView(posicion, 10);
     return null;
-  };*/
+  };
 
   return (
 
@@ -97,6 +95,8 @@ export default function Transporte() {
       <h2>INFO ONLINE DE TRANSPORTE PUBLICO</h2>
 
       {cargando && <h4>ACTUALIZANDO DATOS...</h4>}
+
+      {errorApi && <h4>No se pudo obtener la información</h4>}
 
       {!cargando && <label>
 
@@ -108,7 +108,9 @@ export default function Transporte() {
 
       </label>}
 
-      <MapContainer style={{ width: "100%", height: "100%" }} center={posicion} zoom={9} scrollWheelZoom={false}>
+      <button onClick={posicionPromedio} >CENTRAR MAPA</button>
+
+      <MapContainer style={{ width: "100%", height: "100%" }} center={posicion} zoom={10} scrollWheelZoom={false}>
 
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
@@ -124,6 +126,7 @@ export default function Transporte() {
             </Marker>
           )
         })}
+        <SetViewOnClick />
       </MapContainer>
     </StyledDiv>
   );

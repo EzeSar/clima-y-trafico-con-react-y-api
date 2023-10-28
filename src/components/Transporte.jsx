@@ -46,50 +46,32 @@ export default function Transporte() {
 
   let [bondiElegido, setBondiElegido] = useState();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('https://datosabiertos-transporte-apis.buenosaires.gob.ar:443/colectivos/vehiclePositionsSimple?&client_id=cb6b18c84b3b484d98018a791577af52&client_secret=3e3DB105Fbf642Bf88d5eeB8783EE1E6');
-        if (!response.ok) {
-          setErrorApi(true);
-        }
-        const jsonData = await response.json();
-        setDatosApi(jsonData);
-        let lineas = [];
-        jsonData.map((bondi) => {
-          return (lineas.push(`${bondi["route_short_name"]} - ${bondi["trip_headsign"]}`))
-        });
-        setLineasActivas((Array.from(new Set(lineas))).sort());
-        setCargando(false);
-        setErrorApi(false);
-      } catch (error) {
-        console.error('Error:', error);
+  const fetchData = async () => {
+    try {
+      const response = await fetch('https://datosabiertos-transporte-apis.buenosaires.gob.ar:443/colectivos/vehiclePositionsSimple?&client_id=cb6b18c84b3b484d98018a791577af52&client_secret=3e3DB105Fbf642Bf88d5eeB8783EE1E6');
+      if (!response.ok) {
+        setErrorApi(true);
       }
-    };
+      const jsonData = await response.json();
+      setDatosApi(jsonData);
+      let lineas = [];
+      jsonData.map((bondi) => {
+        return (lineas.push(`${bondi["route_short_name"]} - ${bondi["trip_headsign"]}`))
+      });
+      setLineasActivas((Array.from(new Set(lineas))).sort());
+      setCargando(false);
+      setErrorApi(false);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+  useEffect(() => {
     fetchData();
   }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const fetchData = async () => {
-        try {
-          const response = await fetch('https://datosabiertos-transporte-apis.buenosaires.gob.ar:443/colectivos/vehiclePositionsSimple?&client_id=cb6b18c84b3b484d98018a791577af52&client_secret=3e3DB105Fbf642Bf88d5eeB8783EE1E6');
-          if (!response.ok) {
-            setErrorApi(true);
-          }
-          const jsonData = await response.json();
-          setDatosApi(jsonData);
-          let lineas = [];
-          jsonData.map((bondi) => {
-            return (lineas.push(`${bondi["route_short_name"]} - ${bondi["trip_headsign"]}`))
-          });
-          setLineasActivas((Array.from(new Set(lineas))).sort());
-          setCargando(false);
-          setErrorApi(false);
-        } catch (error) {
-          console.error('Error:', error);
-        }
-      };
       fetchData();
     }, 31000);
     return () => clearInterval(interval);
@@ -98,7 +80,7 @@ export default function Transporte() {
   function handleChange(event) {
     let linea = (datosApi.filter((bondi) => bondi["route_short_name"] === (event.target.value).split(" - ")[0]));
     setLineaElegida(linea);
-    setBondiElegido(`${linea[0]["route_short_name"]} - ${linea[0]["trip_headsign"]}`);
+    setBondiElegido(event.target.value);
   };
 
   function posicionPromedio() {
@@ -140,14 +122,14 @@ export default function Transporte() {
 
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
-        {lineaElegida.map((bondi) => {
+        {lineaElegida.map((item) => {
           return (
-            <Marker position={[bondi["latitude"], bondi["longitude"]]} icon={busIcon}>
+            <Marker position={[item["latitude"], item["longitude"]]} icon={busIcon}>
               <Popup>
-                Linea: {bondi["route_short_name"]}
-                <br />Destino: {bondi["trip_headsign"]}
-                <br />Empresa: {bondi["agency_name"]}
-                <br />Velocidad: {bondi["speed"]}km/h
+                Linea: {item["route_short_name"]}
+                <br />Destino: {item["trip_headsign"]}
+                <br />Empresa: {item["agency_name"]}
+                <br />Velocidad: {item["speed"]}km/h
               </Popup>
             </Marker>
           )

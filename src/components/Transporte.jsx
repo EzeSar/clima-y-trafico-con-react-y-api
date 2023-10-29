@@ -51,19 +51,24 @@ export default function Transporte() {
       const response = await fetch('https://datosabiertos-transporte-apis.buenosaires.gob.ar:443/colectivos/vehiclePositionsSimple?&client_id=cb6b18c84b3b484d98018a791577af52&client_secret=3e3DB105Fbf642Bf88d5eeB8783EE1E6');
       if (!response.ok) {
         setErrorApi(true);
-      }
+      };
       const jsonData = await response.json();
-      setDatosApi(jsonData);
-      let lineas = [];
-      jsonData.map((bondi) => {
-        return (lineas.push(`${bondi["route_short_name"]} - ${bondi["trip_headsign"]}`))
-      });
-      setLineasActivas((Array.from(new Set(lineas))).sort());
-      setCargando(false);
-      setErrorApi(false);
+      if (jsonData) {
+        setDatosApi(jsonData);
+        let lineas = [];
+        jsonData.map((i) => {
+          return (lineas.push(`${i["route_short_name"]} - ${i["trip_headsign"]}`))
+        });
+        setLineasActivas((Array.from(new Set(lineas))).sort());
+        setCargando(false);
+        setErrorApi(false);
+        let linea = (jsonData.filter((i) => (`${i["route_short_name"]} - ${i["trip_headsign"]}`) === bondiElegido));
+        setLineaElegida(linea);
+        console.log(linea[0]["latitude"], linea[0]["longitude"]);
+      };
     } catch (error) {
       console.error('Error:', error);
-    }
+    };
   };
 
   useEffect(() => {
@@ -72,13 +77,14 @@ export default function Transporte() {
 
   useEffect(() => {
     const interval = setInterval(() => {
+      console.log("intervalo");
       fetchData();
     }, 31000);
     return () => clearInterval(interval);
-  }, []);
+  }, [lineaElegida]);
 
   function handleChange(event) {
-    let linea = (datosApi.filter((bondi) => bondi["route_short_name"] === (event.target.value).split(" - ")[0]));
+    let linea = (datosApi.filter((i) => (`${i["route_short_name"]} - ${i["trip_headsign"]}`) === event.target.value));
     setLineaElegida(linea);
     setBondiElegido(event.target.value);
   };

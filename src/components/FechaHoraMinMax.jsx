@@ -264,7 +264,7 @@ export default function FechaHoraMinMax(props){
 
       <p>{props["data"]["weather"]["name"]}</p>
 
-      <StyledBoton onClick={()=>{props.callback(true)}} >Actualizar Datos</StyledBoton>
+      <StyledBoton onClick={() => {props.callback(true)}} >Actualizar Datos</StyledBoton>
       
     </StylFechaHoraMinMax>
   );

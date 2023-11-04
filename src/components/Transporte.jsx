@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
 import { useState, useEffect } from "react";
-import L from 'leaflet';
+import L from "leaflet";
 
 const StyledDiv = styled.div`
   text-align: center;
@@ -28,7 +28,7 @@ const StyledBoton = styled.button`
 export default function Transporte() {
 
   const busIcon = L.icon({
-    iconUrl: require('../assets/bus.png'),
+    iconUrl: require("../assets/bus.png"),
     iconSize: [25, 25],
   });
 
@@ -48,7 +48,7 @@ export default function Transporte() {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('https://datosabiertos-transporte-apis.buenosaires.gob.ar:443/colectivos/vehiclePositionsSimple?&client_id=cb6b18c84b3b484d98018a791577af52&client_secret=3e3DB105Fbf642Bf88d5eeB8783EE1E6');
+      const response = await fetch("https://datosabiertos-transporte-apis.buenosaires.gob.ar:443/colectivos/vehiclePositionsSimple?client_id=cb6b18c84b3b484d98018a791577af52&client_secret=3e3DB105Fbf642Bf88d5eeB8783EE1E6");
       if (!response.ok) {
         setErrorApi(true);
       };
@@ -64,10 +64,9 @@ export default function Transporte() {
         setErrorApi(false);
         let linea = (jsonData.filter((i) => (`${i["route_short_name"]} - ${i["trip_headsign"]}`) === bondiElegido));
         setLineaElegida(linea);
-        console.log(linea[0]["latitude"], linea[0]["longitude"]);
       };
     } catch (error) {
-      console.error('Error:', error);
+      console.error("Error:", error);
     };
   };
 
@@ -77,7 +76,7 @@ export default function Transporte() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      console.log("intervalo");
+      setCargando(true);
       fetchData();
     }, 31000);
     return () => clearInterval(interval);
@@ -106,7 +105,7 @@ export default function Transporte() {
   return (
 
     <StyledDiv>
-      <h2>INFO ONLINE DE TRANSPORTE PUBLICO</h2>
+      <h2>INFO ONLINE de COLECTIVOS en Bs.As.</h2>
 
       {cargando && <h4>ACTUALIZANDO DATOS...</h4>}
 

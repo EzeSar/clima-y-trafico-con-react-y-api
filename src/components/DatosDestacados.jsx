@@ -13,7 +13,7 @@ const GridDatosDest = styled.div`
   grid-template-rows: 1fr 1fr;
   gap: 20px;
   align-items: center;
-  height: 270px;
+  height: 300px;
 `;
 
 const StylDivDato = styled.div`
@@ -26,7 +26,7 @@ const StylDivDato = styled.div`
   border-radius: 10%;
   border: 3px solid #7393A7;
   width: 100px;
-  height: 100px;
+  height: 140px;
 `;
 
 export default function DatosDestacados(props){
@@ -62,30 +62,26 @@ export default function DatosDestacados(props){
 
   return(
 
-    <div style={{display:"flex", flexDirection:"column", textAlign:"center"}} >
-
-      <h2>EL CLIMA EN CORDOBA</h2>
-
       <GridDatosDest>
 
         <StylDivDato style={{backgroundImage:`url(${umbrella})`}} >
-          <div>Probabilidad de lluvia:</div>
-          <div><b>{props["data"]["lluvia"]}%</b></div>
+          <>Probabilidad de lluvia:</>
+          <><b>{props["data"]["lluvia"]}%</b></>
         </StylDivDato>
 
         <StylDivDato style={{backgroundImage:`url(${humedad})`}} >
-          <div>Humedad:</div>
-          <div><b>{props["data"]["humedad"]}%</b></div>
+          <>Humedad:</>
+          <><b>{props["data"]["humedad"]}%</b></>
         </StylDivDato>
 
         <StylDivDato style={{backgroundImage:`url(${viento})`}} >
-          <div>Viento:</div>
-          <div><b>{viento_dir} {props["data"]["viento_km"]}km/h</b></div>
+          <>Viento:</>
+          <><b>{viento_dir} {props["data"]["viento_km"]}km/h</b></>
         </StylDivDato>
 
         <StylDivDato style={{backgroundImage:`url(${uv})`}} >
-          <div>Indice UV:</div>
-          <div><b>{props["data"]["uv"]}</b></div>
+          <>Indice UV:</>
+          <><b>{props["data"]["uv"]}</b></>
         </StylDivDato>
 
         <StylDivDato>
@@ -98,12 +94,10 @@ export default function DatosDestacados(props){
         </StylDivDato>
 
         <StylDivDato style={{backgroundImage:`url(${smoke})`}} >
-          <div>Visibilidad:</div>
-          <div><b>{props["data"]["visibilidad"]}km</b></div>
+          <>Visibilidad:</>
+          <><b>{props["data"]["visibilidad"]}km</b></>
         </StylDivDato>
 
       </GridDatosDest>
-
-    </div>
   );
 }

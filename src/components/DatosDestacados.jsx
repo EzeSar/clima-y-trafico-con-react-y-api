@@ -13,7 +13,7 @@ const GridDatosDest = styled.div`
   grid-template-rows: 1fr 1fr;
   gap: 20px;
   align-items: center;
-  height: 300px;
+  height: 250px;
 `;
 
 const StylDivDato = styled.div`
@@ -26,7 +26,7 @@ const StylDivDato = styled.div`
   border-radius: 10%;
   border: 3px solid #7393A7;
   width: 100px;
-  height: 140px;
+  height: 120px;
 `;
 
 export default function DatosDestacados(props){

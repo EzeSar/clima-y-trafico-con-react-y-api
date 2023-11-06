@@ -51,9 +51,8 @@ const StylFechaHoraMinMax = styled.div`
   background-position: center;
   align-items: center;
   justify-items: center;
-  padding: 10px;
   width: 150px;
-  height: 300px;
+  height: 250px;
   border-radius: 20px;
   border: 3px solid #7393A7;
 `;

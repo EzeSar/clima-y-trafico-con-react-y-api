@@ -55,7 +55,7 @@ export default function Transporte() {
       const jsonData = await response.json();
       if (jsonData) {
         setDatosApi(jsonData);
-        let lineas = [];
+        let lineas = ["-elija una opcion-"];
         jsonData.map((i) => {
           return (lineas.push(`${i["route_short_name"]} - ${i["trip_headsign"]}`))
         });

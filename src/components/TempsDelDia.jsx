@@ -7,7 +7,7 @@ const StyledDivTempsDia = styled.div`
   align-items: center;
   border-radius: 20px;
   border: 3px solid #7393A7;
-  height: 200px;
+  height: 180px;
   padding: 10px;
 `;
 

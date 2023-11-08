@@ -8,7 +8,8 @@ const StyledDivTempsDia = styled.div`
   border-radius: 20px;
   border: 3px solid #7393A7;
   height: 180px;
-  padding: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
 `;
 
 export default function TempsDelDia(props){

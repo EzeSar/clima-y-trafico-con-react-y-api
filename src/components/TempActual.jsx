@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Termometro from "./Termometro";
-  
+import Thermometer from "react-thermometer-component"
+
 const StyledDivTemp = styled.div`
   border-radius: 50%;
   display: flex;
@@ -14,32 +14,44 @@ const StyledDivTemp = styled.div`
   margin: 20px;
 `;
 
-export default function TempActual(props){
+export default function TempActual(props) {
 
   let temp = props["temp_actual"];
 
-  let color = null;
+  let color;
 
-  if(temp >= 30){
-    color = "#EB6383";
-  } else if(temp < 30 && temp >= 20){
-    color = "#FA9191";
-  } else if(temp < 20 && temp >= 10){
-    color = "#FFE9C5";
-  } else if(temp < 10 && temp >= 0){
-    color = "#B4F2E1";
-  } else if(temp < 0){
-    color = "white";
+  function fondoVariable() {
+    if (temp >= 30) {
+      color = "#EB6383";
+    } else if (temp < 30 && temp >= 20) {
+      color = "#FA9191";
+    } else if (temp < 20 && temp >= 10) {
+      color = "#FFE9C5";
+    } else if (temp < 10 && temp >= 0) {
+      color = "#B4F2E1";
+    } else if (temp < 0) {
+      color = "white";
+    };
   };
 
-  return(
+  fondoVariable();
 
-    <StyledDivTemp style={{backgroundColor:color}} >
+  return (
+
+    <StyledDivTemp style={{ backgroundColor: color }} >
 
       <p>Temperatura actual:</p>
 
-      <Termometro value={props["temp_actual"]} />
-      
+      <Thermometer
+        value={props["temp_actual"]}
+        theme="dark"
+        max="45"
+        steps="1"
+        format="°C"
+        size="small"
+        height="100"
+      />
+
     </StyledDivTemp>
   );
 }

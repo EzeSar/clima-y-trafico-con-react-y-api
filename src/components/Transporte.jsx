@@ -102,22 +102,25 @@ export default function Transporte() {
     return null;
   };
 
+  const StyledSelect = styled.select`
+    cursor: pointer;
+    border-radius: 10px;
+  `;
+
   return (
 
     <StyledDiv>
-      <h2>INFO ONLINE de COLECTIVOS en Bs.As.</h2>
+      <h2>Info Online de Colectivos en Bs.As.</h2>
 
-      {cargando && <h4>ACTUALIZANDO DATOS...</h4>}
+      {cargando && <h4>Actualizano Datos...</h4>}
 
       {errorApi && <h4>No se pudo obtener la información</h4>}
 
       {!cargando && <label>
 
-        Selecciona una linea :
-
-        <select value={bondiElegido} onChange={handleChange}>
+        Selecciona una linea : <StyledSelect value={bondiElegido} onChange={handleChange}>
           {lineasActivas.map((option) => (<option value={option}>{option}</option>))}
-        </select>
+        </StyledSelect>
 
       </label>}
 
